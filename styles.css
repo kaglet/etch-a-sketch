@@ -1,0 +1,14 @@
+/* Take care of ALL styling here unless constrained to style within javascript code.*/
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    height: 960px;
+    width: 960px;
+    background-color: navy;
+    margin: auto;
+}
+
+.grid div {
+    outline: 2px solid black;
+}
