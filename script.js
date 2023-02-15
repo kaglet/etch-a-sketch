@@ -53,11 +53,12 @@ let grid = populateGrid(numberOfDivs);
 let isMouseDownTriggered = false;
 
 // Code for if hover and drag mode is selected
-grid.addEventListener('mousedown', function(){
+grid.addEventListener('mousedown', function(e){
+    e.preventDefault();
     isMouseDownTriggered = true;
 });
 
-grid.addEventListener('mouseup', function(){
+grid.addEventListener('mouseup', function(e){
     isMouseDownTriggered = false;
 });
 
