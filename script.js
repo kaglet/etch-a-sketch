@@ -39,6 +39,7 @@ function populateGrid(numberOfDivs) {
     }
 
     body.appendChild(grid);
+    return grid;
 }
 
 function getDrawModeOption(){
@@ -47,25 +48,39 @@ function getDrawModeOption(){
 
 // let numberOfDivs = getNumberOfDivs();
 let numberOfDivs = 16;
-populateGrid(numberOfDivs);
+let grid = populateGrid(numberOfDivs);
 
 let isMouseDownTriggered = false;
 
 // Code for if hover and drag mode is selected
-window.addEventListener('mousedown', function(){
+grid.addEventListener('mousedown', function(){
     isMouseDownTriggered = true;
 });
 
-window.addEventListener('mouseup', function(){
+grid.addEventListener('mouseup', function(){
     isMouseDownTriggered = false;
 });
 
-window.addEventListener('mouseover', function (e) {
-    console.log(e.target);
+grid.addEventListener('mouseover', function (e) {
     if (isMouseDownTriggered === true) {
         e.target.style.backgroundColor = "white";
     }
 });
+
+
+/* WHY IT DOESN'T COLOR FIRST BLOCK
+- mouseover event triggered, reads false as it isn't clicked on yet, once its clicked on isMouseDownTriggered becomes true. 
+The catch is that mouseover doesn't trigger again, only on the first hover. Identify the first in a click and hover sequence. First one
+just needs click not click and hover as it is already hovered on.
+
+Maybe use once. Bind to each div element not to the window.*/
+
+/* WHY COLORING IS INCONSISTENT I.e. On mouseup it colors and on mousedown it stops coloring. 
+
+Without full release of mouse button it won't know which is triggered maybe. It may color it in, or even not color it in,
+when... (well when does grab icon appear?)
+
+I could say mouseup and mousedown switch roles in a way and get confused along the way when "something" happens*/
 
 /* Unbind event listener from window. There's an issue that onMouseOver it reads as false until its clicked which is a good thing, of course it won't color
 until both are satisfied but it will jump into the debugger each time which is really annoying until that condition is satisfied but I can't
