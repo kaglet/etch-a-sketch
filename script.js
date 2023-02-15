@@ -1,5 +1,18 @@
-function getNumberOfDivs() {
+function getDrawModeOption() {
 
+}
+
+function drawOnHover() {
+
+}
+
+function drawOnClickAndDrag() {
+
+}
+
+function getNumberOfDivs() {
+    let gridSizeInput = document.querySelector('input#grid-size');
+    return gridSizeInput.value; 
 }
 
 function colorBlockIn(color = "black", block) {
@@ -15,20 +28,36 @@ function addDiv(grid, calculatedSize) {
     div.style.height = calculatedSize + "px";
     div.style.width = calculatedSize + "px";
 
-
-
     grid.appendChild(div);
 
     return grid;
 }
 
-function populateGrid(numberOfDivs) {
-    const gridDimensions = 960;
-
+function createGrid() {
     let grid = document.createElement('div');
     grid.classList.add('grid');
 
-    const body = document.querySelector('body');
+    return grid;
+}
+
+function clearGrid(grid) {
+    // if grid is empty, return else if grid is not empty remove all children until it is
+    let childrenNodesList = document.querySelectorAll('div.grid div')
+    if (childrenNodesList.length === 0){
+        return;
+    }
+
+    while (grid.firstChild) {
+        grid.removeChild(grid.lastChild);
+    }
+}
+
+function populateGrid() {
+    let grid = document.querySelector('div.grid');
+    clearGrid(grid);
+
+    let numberOfDivs = getNumberOfDivs();
+    const gridDimensions = 960;
 
     for (let i = 0; i < numberOfDivs; i++) {
         for (let j = 0; j < numberOfDivs; j++) {
@@ -37,23 +66,22 @@ function populateGrid(numberOfDivs) {
             grid = addDiv(grid, calculatedSize);
         }
     }
-
-    body.appendChild(grid);
-    return grid;
 }
 
-function getDrawModeOption() {
+let grid = createGrid();
+const body = document.querySelector('body');
+body.appendChild(grid);
+populateGrid();
 
-}
 
-// let numberOfDivs = getNumberOfDivs();
-let numberOfDivs = 16;
-let grid = populateGrid(numberOfDivs);
+let gridSizeButton = document.querySelector('button.grid-size');
+gridSizeButton.addEventListener('click', populateGrid);
 
+// Code for if click and drag mode is selected
 let isMouseDownTriggered = false;
 let isFirstInBoxSeries = true;
 
-// Code for if click and drag mode is selected
+
 grid.addEventListener('mousedown', function(e){
     e.preventDefault();
 
@@ -77,13 +105,13 @@ grid.addEventListener('mouseover', function (e) {
 
 // Code for if hover mode is selected
 
-grid.removeEventListener('mousedown', );
-grid.removeEventListener('mouseup', );
+// grid.removeEventListener('mousedown', );
+// grid.removeEventListener('mouseup', );
 
-grid.addEventListener('mouseover', function (e) {
-    e.preventDefault();
-    e.target.style.backgroundColor = "white";
-});
+// grid.addEventListener('mouseover', function (e) {
+//     e.preventDefault();
+//     e.target.style.backgroundColor = "white";
+// });
 
 
 /* WHY IT DOESN'T COLOR FIRST BLOCK

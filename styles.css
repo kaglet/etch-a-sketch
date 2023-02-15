@@ -1,4 +1,13 @@
 /* Take care of ALL styling here unless constrained to style within javascript code.*/
+/* Don't forget you can style on an event, while running programming logic on an event is for js.*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 40px 20px;
+}
 
 .grid {
     display: flex;
@@ -12,3 +21,4 @@
 .grid div {
     outline: 2px solid black;
 }
+
