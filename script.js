@@ -2,21 +2,21 @@ function getNumberOfDivs() {
 
 }
 
-function colorBlockIn(color="black", block) {
+function colorBlockIn(color = "black", block) {
     block.style.color = color;
 }
 
 function getDesiredDivSize(numberOfDivs, gridDimensions) {
-    return gridDimensions/numberOfDivs;
+    return gridDimensions / numberOfDivs;
 }
 
-function addDiv(grid, calculatedSize){
+function addDiv(grid, calculatedSize) {
     let div = document.createElement('div');
     div.style.height = calculatedSize + "px";
     div.style.width = calculatedSize + "px";
 
 
-    
+
     grid.appendChild(div);
 
     return grid;
@@ -33,7 +33,7 @@ function populateGrid(numberOfDivs) {
     for (let i = 0; i < numberOfDivs; i++) {
         for (let j = 0; j < numberOfDivs; j++) {
             let calculatedSize = getDesiredDivSize(numberOfDivs, gridDimensions);
-            
+
             grid = addDiv(grid, calculatedSize);
         }
     }
@@ -42,7 +42,7 @@ function populateGrid(numberOfDivs) {
     return grid;
 }
 
-function getDrawModeOption(){
+function getDrawModeOption() {
 
 }
 
@@ -77,15 +77,23 @@ grid.addEventListener('mouseover', function (e) {
 
 // Code for if hover mode is selected
 
+grid.removeEventListener('mousedown', );
+grid.removeEventListener('mouseup', );
+
+grid.addEventListener('mouseover', function (e) {
+    e.preventDefault();
+    e.target.style.backgroundColor = "white";
+});
+
 
 /* WHY IT DOESN'T COLOR FIRST BLOCK
-- mouseover event triggered, reads false as it isn't clicked on yet, once its clicked on isMouseDownTriggered becomes true. 
+- mouseover event triggered, reads false as it isn't clicked on yet, once its clicked on isMouseDownTriggered becomes true.
 The catch is that mouseover doesn't trigger again, only on the first hover. Identify the first in a click and hover sequence. First one
 just needs click not click and hover as it is already hovered on.
 
 Maybe use once. Bind to each div element not to the window.*/
 
-/* WHY COLORING IS INCONSISTENT I.e. On mouseup it colors and on mousedown it stops coloring. 
+/* WHY COLORING IS INCONSISTENT I.e. On mouseup it colors and on mousedown it stops coloring.
 
 Without full release of mouse button it won't know which is triggered maybe. It may color it in, or even not color it in,
 when... (well when does grab icon appear?)
