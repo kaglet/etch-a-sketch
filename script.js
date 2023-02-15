@@ -2,6 +2,10 @@ function getNumberOfDivs() {
 
 }
 
+function colorBlockIn(color="black", block) {
+    block.style.color = color;
+}
+
 function getDesiredDivSize(numberOfDivs, gridDimensions) {
     return gridDimensions/numberOfDivs;
 }
@@ -11,6 +15,8 @@ function addDiv(grid, calculatedSize){
     div.style.height = calculatedSize + "px";
     div.style.width = calculatedSize + "px";
 
+
+    
     grid.appendChild(div);
 
     return grid;
