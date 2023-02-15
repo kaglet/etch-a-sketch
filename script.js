@@ -51,15 +51,22 @@ let numberOfDivs = 16;
 let grid = populateGrid(numberOfDivs);
 
 let isMouseDownTriggered = false;
+let isFirstInBoxSeries = true;
 
-// Code for if hover and drag mode is selected
+// Code for if click and drag mode is selected
 grid.addEventListener('mousedown', function(e){
     e.preventDefault();
+
+    if (isFirstInBoxSeries) {
+        e.target.style.backgroundColor = "white";
+        isFirstInBoxSeries = false;
+    }
     isMouseDownTriggered = true;
 });
 
 grid.addEventListener('mouseup', function(e){
     isMouseDownTriggered = false;
+    isFirstInBoxSeries = true;
 });
 
 grid.addEventListener('mouseover', function (e) {
@@ -67,6 +74,8 @@ grid.addEventListener('mouseover', function (e) {
         e.target.style.backgroundColor = "white";
     }
 });
+
+// Code for if hover mode is selected
 
 
 /* WHY IT DOESN'T COLOR FIRST BLOCK
