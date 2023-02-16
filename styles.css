@@ -22,3 +22,12 @@ body {
     outline: 2px solid black;
 }
 
+.grid-size.options-container {
+    display: inline;
+}
+
+.draw-mode.options-container > label {
+    margin: 40px 0px;
+    display: block;
+}
+

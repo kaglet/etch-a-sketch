@@ -11,10 +11,23 @@
 </head>
 
 <body>
-    <label for="grid-size">Choose the grid size: </label>
-    <input id="grid-size" type="number" min="1" max="100" name="grid-size" value="25">
-    <button class="grid-size selection">Enter</button>
+    <div class="grid-size options-container">
+        <label for="grid-size">Choose the grid size: </label>
+        <input id="grid-size" type="number" min="1" max="100" name="grid-size" value="25">
+        <button class="grid-size selection">Enter</button>
+    </div>
 
+    <div class="draw-mode options-container">
+        <label>Click and Drag (On Hold Down)
+            <input type="radio" name="draw-mode" value="Click and Drag (Hold down version)">
+        </label>
+        <label>Click and Drag (On Release Up)
+            <input type="radio" name="draw-mode" value="Click and Drag (Release up version)">
+        </label>
+        <label>Hover Over
+            <input type="radio" name="draw-mode" value="Hover Over">
+        </label>
+    </div>
 </body>
 
 </html>

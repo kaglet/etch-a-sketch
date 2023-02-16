@@ -1,5 +1,92 @@
-function getDrawModeOption() {
+function removeGridEventListeners(grid) {
+    // Remove all grid event listeners that might be active
+    grid.removeEventListener('mousedown', grid.fnMouseDown);
+    grid.removeEventListener('mouseup', grid.fnMouseUp);
+    grid.removeEventListener('mouseover', grid.fnMouseOverDrag);
+    grid.removeEventListener('mouseover', grid.fnMouseOverHover);
+    grid.removeEventListener('click', grid.fnClick);
+    grid.removeEventListener('mouseover', grid.fnMouseOverRelease);
+}
 
+function setDrawModeToClickDragRelease() {
+    let grid = document.querySelector('div.grid');
+    
+    removeGridEventListeners(grid);
+
+    // Does not matter where these are declared, only where and when they are updated
+    let sustainColoring = false;
+
+    // Add unique event listeners
+    grid.addEventListener('click', grid.fnClick = function(e){
+        e.preventDefault();
+        if (sustainColoring === false) {
+            sustainColoring = true; 
+        } else {
+            sustainColoring = false;
+        }
+        e.target.style.backgroundColor = "white";
+    });
+
+    grid.addEventListener('mouseover', grid.fnMouseOverRelease = function(e){
+        e.preventDefault();
+        if (sustainColoring === true) {
+            e.target.style.backgroundColor = "white";  
+        }
+    });
+}
+
+function setDrawModeToHover() {
+    let grid = document.querySelector('div.grid');
+    removeGridEventListeners(grid);
+
+    // Add unique event listeners
+    grid.addEventListener('mouseover', grid.fnMouseOverHover = function (e) {
+        e.preventDefault();
+        e.target.style.backgroundColor = "white";
+    });
+}
+
+function setDrawModeToClickDragHold() {
+    // Does not matter where these are declared, only where and when they are updated
+    let isMouseDownTriggered = false;
+    let isFirstInBoxSeries = true;
+
+    let grid = document.querySelector('div.grid');
+
+    removeGridEventListeners(grid);
+
+    // Add unique event listeners
+    grid.addEventListener('mousedown', grid.fnMouseDown = function (e) {
+        e.preventDefault();
+
+        if (isFirstInBoxSeries) {
+            e.target.style.backgroundColor = "white";
+            isFirstInBoxSeries = false;
+        }
+        isMouseDownTriggered = true;
+    });
+
+    grid.addEventListener('mouseup', grid.fnMouseUp = function (e) {
+        isMouseDownTriggered = false;
+        isFirstInBoxSeries = true;
+    });
+
+    grid.addEventListener('mouseover', grid.fnMouseOverDrag = function (e) {
+        if (isMouseDownTriggered === true) {
+            e.target.style.backgroundColor = "white";
+        }
+    });
+}
+
+function setDrawMode(e) {
+    if (e.target.value === "Click and Drag (Hold down version)") {
+        setDrawModeToClickDragHold();
+    } else if (e.target.value === "Click and Drag (Release up version)") {
+        setDrawModeToClickDragRelease();
+    }
+    else if (e.target.value === "Hover Over") {
+        setDrawModeToHover();
+    }
 }
 
 function drawOnHover() {
@@ -12,7 +99,7 @@ function drawOnClickAndDrag() {
 
 function getNumberOfDivs() {
     let gridSizeInput = document.querySelector('input#grid-size');
-    return gridSizeInput.value; 
+    return gridSizeInput.value;
 }
 
 function colorBlockIn(color = "black", block) {
@@ -41,9 +128,9 @@ function createGrid() {
 }
 
 function clearGrid(grid) {
-    // if grid is empty, return else if grid is not empty remove all children until it is
+    // if grid is empty, return, else remove all children until it is
     let childrenNodesList = document.querySelectorAll('div.grid div')
-    if (childrenNodesList.length === 0){
+    if (childrenNodesList.length === 0) {
         return;
     }
 
@@ -77,41 +164,10 @@ populateGrid();
 let gridSizeButton = document.querySelector('button.grid-size');
 gridSizeButton.addEventListener('click', populateGrid);
 
-// Code for if click and drag mode is selected
-let isMouseDownTriggered = false;
-let isFirstInBoxSeries = true;
+let drawModeOptionsList = document.querySelectorAll('input[name="draw-mode"]');
+drawModeOptionsList.forEach(drawModeOption => drawModeOption.addEventListener('click', setDrawMode));
 
 
-grid.addEventListener('mousedown', function(e){
-    e.preventDefault();
-
-    if (isFirstInBoxSeries) {
-        e.target.style.backgroundColor = "white";
-        isFirstInBoxSeries = false;
-    }
-    isMouseDownTriggered = true;
-});
-
-grid.addEventListener('mouseup', function(e){
-    isMouseDownTriggered = false;
-    isFirstInBoxSeries = true;
-});
-
-grid.addEventListener('mouseover', function (e) {
-    if (isMouseDownTriggered === true) {
-        e.target.style.backgroundColor = "white";
-    }
-});
-
-// Code for if hover mode is selected
-
-// grid.removeEventListener('mousedown', );
-// grid.removeEventListener('mouseup', );
-
-// grid.addEventListener('mouseover', function (e) {
-//     e.preventDefault();
-//     e.target.style.backgroundColor = "white";
-// });
 
 
 /* WHY IT DOESN'T COLOR FIRST BLOCK
