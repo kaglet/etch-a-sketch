@@ -8,7 +8,14 @@ function removeGridEventListeners(grid) {
     grid.removeEventListener('mouseover', grid.fnMouseOverRelease);
 }
 
-function setDrawModeToClickDragRelease() {
+function getColor() {
+    let colorWell = document.querySelector('#colorWell');
+    let color = colorWell.value;
+
+    return color;
+}
+
+function setDrawModeToClickDragRelease(colorWell) {
     let grid = document.querySelector('div.grid');
     
     removeGridEventListeners(grid);
@@ -25,29 +32,29 @@ function setDrawModeToClickDragRelease() {
             sustainColoring = false; 
         }
         console.log(e.target);
-        e.target.style.backgroundColor = "white";
+        e.target.style.backgroundColor = colorWell.value;
     });
 
     grid.addEventListener('mouseover', grid.fnMouseOverRelease = function(e){
         e.preventDefault();
         if (sustainColoring === true) {
-            e.target.style.backgroundColor = "white";  
+            e.target.style.backgroundColor = colorWell.value;  
         }
     });
 }
 
-function setDrawModeToHover() {
+function setDrawModeToHover(colorWell) {
     let grid = document.querySelector('div.grid');
     removeGridEventListeners(grid);
 
     // Add unique event listeners
     grid.addEventListener('mouseover', grid.fnMouseOverHover = function (e) {
         e.preventDefault();
-        e.target.style.backgroundColor = "white";
+        e.target.style.backgroundColor = colorWell.value;
     });
 }
 
-function setDrawModeToClickDragHold() {
+function setDrawModeToClickDragHold(colorWell) {
     // Does not matter where these are declared, only where and when they are updated
     let isMouseDownTriggered = false;
     let isFirstInBoxSeries = true;
@@ -61,7 +68,7 @@ function setDrawModeToClickDragHold() {
         e.preventDefault();
 
         if (isFirstInBoxSeries) {
-            e.target.style.backgroundColor = "white";
+            e.target.style.backgroundColor = colorWell.value;
             isFirstInBoxSeries = false;
         }
         isMouseDownTriggered = true;
@@ -74,19 +81,20 @@ function setDrawModeToClickDragHold() {
 
     grid.addEventListener('mouseover', grid.fnMouseOverDrag = function (e) {
         if (isMouseDownTriggered === true) {
-            e.target.style.backgroundColor = "white";
+            e.target.style.backgroundColor = colorWell.value;
         }
     });
 }
 
 function setDrawMode(e) {
+    let colorWell = document.querySelector('#colorWell');
     if (e.target.value === "Click and Drag (Hold down version)") {
-        setDrawModeToClickDragHold();
+        setDrawModeToClickDragHold(colorWell);
     } else if (e.target.value === "Click and Drag (Release up version)") {
-        setDrawModeToClickDragRelease();
+        setDrawModeToClickDragRelease(colorWell);
     }
     else if (e.target.value === "Hover Over") {
-        setDrawModeToHover();
+        setDrawModeToHover(colorWell);
     }
 }
 
