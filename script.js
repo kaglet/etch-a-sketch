@@ -4,7 +4,7 @@ function removeGridEventListeners(grid) {
     grid.removeEventListener('mouseup', grid.fnMouseUp);
     grid.removeEventListener('mouseover', grid.fnMouseOverDrag);
     grid.removeEventListener('mouseover', grid.fnMouseOverHover);
-    grid.removeEventListener('click', grid.fnClick);
+    grid.removeEventListener('click', grid.fnMouseDownRelease);
     grid.removeEventListener('mouseover', grid.fnMouseOverRelease);
 }
 
@@ -17,13 +17,14 @@ function setDrawModeToClickDragRelease() {
     let sustainColoring = false;
 
     // Add unique event listeners
-    grid.addEventListener('click', grid.fnClick = function(e){
+    grid.addEventListener('mousedown', grid.fnMouseDownRelease = function(e){
         e.preventDefault();
         if (sustainColoring === false) {
             sustainColoring = true; 
         } else {
-            sustainColoring = false;
+            sustainColoring = false; 
         }
+        console.log(e.target);
         e.target.style.backgroundColor = "white";
     });
 
