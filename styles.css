@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -16,18 +17,55 @@ body {
     width: 960px;
     background-color: navy;
     margin: auto;
+    flex-shrink: 0;
 }
 
 .grid div {
     outline: 2px solid black;
 }
 
-.grid-size.options-container {
-    display: inline;
+.options-container > label {
+    margin: 10px 0px;
 }
 
-.draw-mode.options-container > label {
-    margin: 40px 0px;
-    display: block;
+.grid-size > label {
+    margin: 0px;
 }
 
+legend {
+    float: left;
+    text-align: center;
+}
+
+form[name="options"] fieldset {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+fieldset {
+    padding: 10px 5px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.main-content {
+    display: flex;
+}
+
+form[name="options"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 0px;
+}
+
+form[name="size-options"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

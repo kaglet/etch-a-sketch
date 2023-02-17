@@ -87,7 +87,7 @@ function setDrawModeToClickDragHold(colorWell) {
 }
 
 function setDrawMode(e) {
-    let colorWell = document.querySelector('#colorWell');
+    let colorWell = document.querySelector('#penColorWell');
     if (e.target.value === "Click and Drag (Hold down version)") {
         setDrawModeToClickDragHold(colorWell);
     } else if (e.target.value === "Click and Drag (Release up version)") {
@@ -165,8 +165,8 @@ function populateGrid() {
 }
 
 let grid = createGrid();
-const body = document.querySelector('body');
-body.appendChild(grid);
+const mainContentDiv = document.querySelector('div.main-content');
+mainContentDiv.appendChild(grid);
 populateGrid();
 
 
