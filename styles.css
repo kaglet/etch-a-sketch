@@ -8,22 +8,20 @@
 
 body {
     padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
 }
 
 .grid {
     display: flex;
     flex-wrap: wrap;
-    height: 900px;
-    width: 900px;
+    height: 960px;
+    width: 960px;
     background-color: navy;
+    margin: auto;
     flex-shrink: 0;
 }
 
 .grid div {
-    outline: 1px solid black;
+    outline: 2px solid black;
 }
 
 .options-container > label {
@@ -56,8 +54,6 @@ h1 {
 
 .main-content {
     display: flex;
-    justify-content: center;
-    gap: 190px;
 }
 
 form[name="options"] {
@@ -65,17 +61,11 @@ form[name="options"] {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding-top: 63px;
+    padding: 100px 0px;
 }
 
 form[name="size-options"] {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.grid-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }

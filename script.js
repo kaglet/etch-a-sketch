@@ -8,49 +8,53 @@ function removeGridEventListeners(grid) {
     grid.removeEventListener('mouseover', grid.fnMouseOverRelease);
 }
 
-function setDrawModeToClickDragRelease() {
-    let grid = document.querySelector('div.grid');
+function getColor() {
+    let colorWell = document.querySelector('#colorWell');
+    let color = colorWell.value;
 
+    return color;
+}
+
+function setDrawModeToClickDragRelease(colorWell) {
+    let grid = document.querySelector('div.grid');
+    
     removeGridEventListeners(grid);
 
     // Does not matter where these are declared, only where and when they are updated
     let sustainColoring = false;
 
     // Add unique event listeners
-    grid.addEventListener('mousedown', grid.fnMouseDownRelease = function (e) {
+    grid.addEventListener('mousedown', grid.fnMouseDownRelease = function(e){
         e.preventDefault();
         if (sustainColoring === false) {
-            sustainColoring = true;
+            sustainColoring = true; 
         } else {
-            sustainColoring = false;
+            sustainColoring = false; 
         }
         console.log(e.target);
-        let color = getColorAccordingToPenMode();
-        e.target.style.backgroundColor = color;
+        e.target.style.backgroundColor = colorWell.value;
     });
 
-    grid.addEventListener('mouseover', grid.fnMouseOverRelease = function (e) {
+    grid.addEventListener('mouseover', grid.fnMouseOverRelease = function(e){
         e.preventDefault();
         if (sustainColoring === true) {
-            let color = getColorAccordingToPenMode();
-            e.target.style.backgroundColor = color;
+            e.target.style.backgroundColor = colorWell.value;  
         }
     });
 }
 
-function setDrawModeToHover() {
+function setDrawModeToHover(colorWell) {
     let grid = document.querySelector('div.grid');
     removeGridEventListeners(grid);
 
     // Add unique event listeners
     grid.addEventListener('mouseover', grid.fnMouseOverHover = function (e) {
         e.preventDefault();
-        let color = getColorAccordingToPenMode();
-        e.target.style.backgroundColor = color;
+        e.target.style.backgroundColor = colorWell.value;
     });
 }
 
-function setDrawModeToClickDragHold() {
+function setDrawModeToClickDragHold(colorWell) {
     // Does not matter where these are declared, only where and when they are updated
     let isMouseDownTriggered = false;
     let isFirstInBoxSeries = true;
@@ -64,8 +68,7 @@ function setDrawModeToClickDragHold() {
         e.preventDefault();
 
         if (isFirstInBoxSeries) {
-            let color = getColorAccordingToPenMode();
-            e.target.style.backgroundColor = color;
+            e.target.style.backgroundColor = colorWell.value;
             isFirstInBoxSeries = false;
         }
         isMouseDownTriggered = true;
@@ -77,61 +80,39 @@ function setDrawModeToClickDragHold() {
     });
 
     grid.addEventListener('mouseover', grid.fnMouseOverDrag = function (e) {
-        e.preventDefault();
         if (isMouseDownTriggered === true) {
-            let color = getColorAccordingToPenMode();
-            e.target.style.backgroundColor = color;
+            e.target.style.backgroundColor = colorWell.value;
         }
     });
 }
 
-function getRandomizedColor() {
-    // Math.pow is slow, use constant instead.
-    let color = Math.floor(Math.random() * 16777216).toString(16);
-    // Avoid loops.
-    return '#000000'.slice(0, -color.length) + color;
-}
-
-function getGridBackgroundColor() {
-    let grid = document.getElementById('grid');
-    return grid.style.backgroundColor;
-}
-
-function getColorAccordingToPenMode() {
-    if (document.getElementById("colored-pen").checked) {
-        let color = document.getElementById("penColorWell").value;
-        return color;
-    }
-    else if (document.getElementById("randomized-pen").checked) {
-        let color = getRandomizedColor();
-        return color;
-    }
-    else if (document.getElementById("shader-pen").checked) {
-        let color = getDarkerColor();
-    }
-    else if (document.getElementById("lightener-pen").checked) {
-        let color = getLighterColor();
-    }
-    else if (document.getElementById("eraser-pen").checked) {
-        let color = getGridBackgroundColor();
-        return color;
-    }
-}
-
 function setDrawMode(e) {
+    let colorWell = document.querySelector('#penColorWell');
     if (e.target.value === "Click and Drag (Hold down version)") {
-        setDrawModeToClickDragHold();
+        setDrawModeToClickDragHold(colorWell);
     } else if (e.target.value === "Click and Drag (Release up version)") {
-        setDrawModeToClickDragRelease();
+        setDrawModeToClickDragRelease(colorWell);
     }
     else if (e.target.value === "Hover Over") {
-        setDrawModeToHover();
+        setDrawModeToHover(colorWell);
     }
+}
+
+function drawOnHover() {
+
+}
+
+function drawOnClickAndDrag() {
+
 }
 
 function getNumberOfDivs() {
     let gridSizeInput = document.querySelector('input#grid-size');
     return gridSizeInput.value;
+}
+
+function colorBlockIn(color = "black", block) {
+    block.style.color = color;
 }
 
 function getDesiredDivSize(numberOfDivs, gridDimensions) {
@@ -142,7 +123,6 @@ function addDiv(grid, calculatedSize) {
     let div = document.createElement('div');
     div.style.height = calculatedSize + "px";
     div.style.width = calculatedSize + "px";
-    div.style.backgroundColor = grid.style.backgroundColor;
 
     grid.appendChild(div);
 
@@ -152,10 +132,6 @@ function addDiv(grid, calculatedSize) {
 function createGrid() {
     let grid = document.createElement('div');
     grid.classList.add('grid');
-    grid.setAttribute('id', 'grid');
-
-    let gridBackgroundColorWell = document.getElementById('bgColorWell');
-    grid.style.backgroundColor = gridBackgroundColorWell.value;
 
     return grid;
 }
@@ -177,7 +153,7 @@ function populateGrid() {
     clearGrid(grid);
 
     let numberOfDivs = getNumberOfDivs();
-    const gridDimensions = 900;
+    const gridDimensions = 960;
 
     for (let i = 0; i < numberOfDivs; i++) {
         for (let j = 0; j < numberOfDivs; j++) {
@@ -189,9 +165,10 @@ function populateGrid() {
 }
 
 let grid = createGrid();
-const gridContainerDiv = document.querySelector('.grid-container');
-gridContainerDiv.appendChild(grid);
-// populateGrid();
+const mainContentDiv = document.querySelector('div.main-content');
+mainContentDiv.appendChild(grid);
+populateGrid();
+
 
 let gridSizeButton = document.querySelector('button.grid-size');
 gridSizeButton.addEventListener('click', populateGrid);
@@ -199,33 +176,8 @@ gridSizeButton.addEventListener('click', populateGrid);
 let drawModeOptionsList = document.querySelectorAll('input[name="draw-mode"]');
 drawModeOptionsList.forEach(drawModeOption => drawModeOption.addEventListener('click', setDrawMode));
 
-// Color in both cases separately
-let gridLinesColorWell = document.getElementById('grid-lines-color-well');
-let gridDivs = document.querySelectorAll('.grid div');
-gridLinesColorWell.addEventListener('input', function (e) {
-    e.preventDefault();
-    gridDivs.forEach(div => div.style.outline = '1px solid ' + gridLinesColorWell.value);
-});
 
-let gridLinesToggle = document.getElementById('grid-lines-toggle');
-let gridLinesPresent = true;
 
-gridLinesToggle.addEventListener('click', function (){
-    if (gridLinesPresent) {
-        gridDivs.forEach(div => div.style.outline = '0px');
-        gridLinesPresent = false;
-    }
-    else {
-        gridDivs.forEach(div => div.style.outline = '1px solid ' + gridLinesColorWell.value);
-        gridLinesPresent = true;
-    }
-});
-
-let gridBackgroundColorWell = document.getElementById('bgColorWell');
-gridBackgroundColorWell.addEventListener('input',function (e) {
-    e.preventDefault();
-    grid.style.backgroundColor = gridBackgroundColorWell.value;
-});
 
 /* WHY IT DOESN'T COLOR FIRST BLOCK
 - mouseover event triggered, reads false as it isn't clicked on yet, once its clicked on isMouseDownTriggered becomes true.
