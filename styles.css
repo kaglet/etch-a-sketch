@@ -23,7 +23,7 @@ body {
 }
 
 .grid div {
-    outline: 1px solid black;
+    border: 1px solid black;
 }
 
 .options-container > label {

@@ -142,7 +142,7 @@ function addDiv(grid, calculatedSize) {
     let div = document.createElement('div');
     div.style.height = calculatedSize + "px";
     div.style.width = calculatedSize + "px";
-    div.style.backgroundColor = grid.style.backgroundColor;
+    //div.style.backgroundColor = grid.style.backgroundColor;
 
     grid.appendChild(div);
 
@@ -203,8 +203,8 @@ drawModeOptionsList.forEach(drawModeOption => drawModeOption.addEventListener('c
 let gridLinesColorWell = document.getElementById('grid-lines-color-well');
 let gridDivs = document.querySelectorAll('.grid div');
 gridLinesColorWell.addEventListener('input', function (e) {
-    e.preventDefault();
-    gridDivs.forEach(div => div.style.outline = '1px solid ' + gridLinesColorWell.value);
+    // e.preventDefault();
+    gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);
 });
 
 let gridLinesToggle = document.getElementById('grid-lines-toggle');
@@ -212,20 +212,22 @@ let gridLinesPresent = true;
 
 gridLinesToggle.addEventListener('click', function (){
     if (gridLinesPresent) {
-        gridDivs.forEach(div => div.style.outline = '0px');
+        gridDivs.forEach(div => div.style.border = '0px');
         gridLinesPresent = false;
     }
     else {
-        gridDivs.forEach(div => div.style.outline = '1px solid ' + gridLinesColorWell.value);
+        gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);
         gridLinesPresent = true;
     }
 });
 
 let gridBackgroundColorWell = document.getElementById('bgColorWell');
 gridBackgroundColorWell.addEventListener('input',function (e) {
-    e.preventDefault();
+    // e.preventDefault();
     grid.style.backgroundColor = gridBackgroundColorWell.value;
 });
+
+/*#887272 for gridlines and #F0F0F0 for bg */
 
 /* WHY IT DOESN'T COLOR FIRST BLOCK
 - mouseover event triggered, reads false as it isn't clicked on yet, once its clicked on isMouseDownTriggered becomes true.
