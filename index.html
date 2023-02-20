@@ -17,39 +17,36 @@
         <form name="options">
             <fieldset class="draw-mode options-container" name="draw-modes">
                 <legend>Draw Modes</legend>
-                <label for="click-drag-hold-mode">Click, Hold Down and Drag 
-                </label>
-                <input type="radio" name="draw-mode" value="Click and Drag (Hold down version)" id="click-drag-hold-mode">
-                <label for="click-drag-release-mode">Click, Release and Drag 
-                </label>
+                <label for="click-drag-hold-mode">Click, Hold Down and Drag</label>
+                <input type="radio" name="draw-mode" value="Click and Drag (Hold down version)" id="click-drag-hold-mode" checked>
+                <label for="click-drag-release-mode">Click, Release and Drag</label>
                 <input type="radio" name="draw-mode" value="Click and Drag (Release up version)" id="click-drag-release-mode">
-                <label>Hover Over 
-                </label for="hover-over-mode">
+                <label for="hover-over-mode">Hover Over </label>
                 <input type="radio" name="draw-mode" value="Hover Over" id="hover-over-mode">
             </fieldset>
     
             <fieldset class="draw-tools options-container" name="draw-tools">
                 <legend>Draw Tools</legend>
                 <label for="colored-pen">Colored Pen 
-                    <input type="color" id="penColorWell" value="#ffffff">
+                    <input type="color" id="penColorWell" value="#000000">
                 </label>
-                <input type="radio" id="colored-pen" name="pen-mode">
-                <label>Randomized Pen </label>
+                <input type="radio" id="colored-pen" name="pen-mode" checked>
+                <label for="randomized-pen">Randomized Pen </label>
                 <input type="radio" id="randomized-pen" name="pen-mode">
-                <label>Shader Pen </label>
+                <label for="shader-pen">Shader Pen </label>
                 <input type="radio" id="shader-pen" name="pen-mode">
-                <label>Lightener Pen </label>
+                <label for="lightener-pen">Lightener Pen </label>
                 <input type="radio" id="lightener-pen" name="pen-mode"> 
-                <label>Eraser Pen </label>
+                <label for="eraser-pen">Eraser Pen </label>
                 <input type="radio" id="eraser-pen" name="pen-mode">
             </fieldset>
     
             <fieldset class="canvas-tools options-container" name="canvas-tools">
                 <legend>Canvas Tools</legend>
                 <label>Grid Lines 
-                    <input type="color" id="grid-lines-color-well" value="#ffffff">
+                    <input type="color" id="grid-lines-color-well" value="#000000">
                 </label>
-                <input type="radio" name="grid-lines" id="grid-lines-toggle">
+                <input type="checkbox" name="grid-lines" id="grid-lines-toggle" checked>
                 <label>Background
                     <input type="color" id="bgColorWell" value="#ffffff">
                 </label>
@@ -57,13 +54,13 @@
         </form>
 
         <div class="grid-container">
-            <form name="size-options">
+            <div name="size-options">
                 <fieldset class="grid-size options-container" name="grid-size-options">
                     <label for="grid-size">Choose the grid size: </label>
                     <input id="grid-size" type="number" min="1" max="100" name="grid-size" value="25">
                     <button class="grid-size selection">Enter</button>
                 </fieldset>
-            </form>
+            </div>
         </div>
     </div>
     
