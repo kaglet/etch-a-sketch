@@ -43,11 +43,9 @@ form[name="options"] fieldset {
     width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-}
-
-fieldset {
-    padding: 10px 5px;
+    gap: 20px;
+    padding: 10px 20px;
+    gap: 20px;
 }
 
 h1 {
@@ -78,4 +76,11 @@ div[name="size-options"] {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+
+.option-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

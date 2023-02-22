@@ -97,6 +97,30 @@ function getGridBackgroundColor() {
     return grid.style.backgroundColor;
 }
 
+function getLighterColor(color, percent) {
+    var R = parseInt(color.substring(1, 3), 16);
+    var G = parseInt(color.substring(3, 5), 16);
+    var B = parseInt(color.substring(5, 7), 16);
+
+    R = parseInt(R * (100 + percent) / 100);
+    G = parseInt(G * (100 + percent) / 100);
+    B = parseInt(B * (100 + percent) / 100);
+
+    R = (R < 255) ? R : 255;
+    G = (G < 255) ? G : 255;
+    B = (B < 255) ? B : 255;
+
+    R = Math.round(R)
+    G = Math.round(G)
+    B = Math.round(B)
+
+    var RR = ((R.toString(16).length == 1) ? "0" + R.toString(16) : R.toString(16));
+    var GG = ((G.toString(16).length == 1) ? "0" + G.toString(16) : G.toString(16));
+    var BB = ((B.toString(16).length == 1) ? "0" + B.toString(16) : B.toString(16));
+
+    return "#" + RR + GG + BB;
+}
+
 function getColorAccordingToPenMode() {
     if (document.getElementById("colored-pen").checked) {
         let color = document.getElementById("penColorWell").value;
@@ -208,9 +232,9 @@ gridLinesColorWell.addEventListener('input', function (e) {
 });
 
 let gridLinesToggle = document.getElementById('grid-lines-toggle');
-let gridLinesPresent = true;
+let gridLinesPresent = false;
 
-gridLinesToggle.addEventListener('click', function (){
+gridLinesToggle.addEventListener('click', function () {
     if (gridLinesPresent) {
         gridDivs.forEach(div => div.style.border = '0px');
         gridLinesPresent = false;
@@ -222,12 +246,15 @@ gridLinesToggle.addEventListener('click', function (){
 });
 
 let gridBackgroundColorWell = document.getElementById('bgColorWell');
-gridBackgroundColorWell.addEventListener('input',function (e) {
+gridBackgroundColorWell.addEventListener('input', function (e) {
     // e.preventDefault();
     grid.style.backgroundColor = gridBackgroundColorWell.value;
 });
 
 /*#887272 for gridlines and #F0F0F0 for bg */
+
+/* When shader pen is activated how does it colour in? It uses the target for which the color selection is invoked. */
+
 
 /* WHY IT DOESN'T COLOR FIRST BLOCK
 - mouseover event triggered, reads false as it isn't clicked on yet, once its clicked on isMouseDownTriggered becomes true.
