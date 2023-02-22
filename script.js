@@ -25,15 +25,21 @@ function setDrawModeToClickDragRelease() {
             sustainColoring = false;
         }
         console.log(e.target);
-        let color = getColorAccordingToPenMode(e.target.style.backgroundColor);
-        e.target.style.backgroundColor = color;
+        let color = getColorAccordingToPenMode(e);
+        if (color !== undefined) {
+            e.target.style.backgroundColor = color;
+            e.target.classList.add('colored');
+        }
     });
 
     grid.addEventListener('mouseover', grid.fnMouseOverRelease = function (e) {
         e.preventDefault();
         if (sustainColoring === true) {
-            let color = getColorAccordingToPenMode(e.target.style.backgroundColor);
-            e.target.style.backgroundColor = color;
+            let color = getColorAccordingToPenMode(e);
+            if (color !== undefined) {
+                e.target.style.backgroundColor = color;
+                e.target.classList.add('colored');
+            }
         }
     });
 }
@@ -45,8 +51,11 @@ function setDrawModeToHover() {
     // Add unique event listeners
     grid.addEventListener('mouseover', grid.fnMouseOverHover = function (e) {
         e.preventDefault();
-        let color = getColorAccordingToPenMode(e.target.style.backgroundColor);
-        e.target.style.backgroundColor = color;
+        let color = getColorAccordingToPenMode(e);
+        if (color !== undefined) {
+            e.target.style.backgroundColor = color;
+            e.target.classList.add('colored');
+        }
     });
 }
 
@@ -64,8 +73,11 @@ function setDrawModeToClickDragHold() {
         e.preventDefault();
 
         if (isFirstInBoxSeries) {
-            let color = getColorAccordingToPenMode(e.target.style.backgroundColor);
-            e.target.style.backgroundColor = color;
+            let color = getColorAccordingToPenMode(e);
+            if (color !== undefined) {
+                e.target.style.backgroundColor = color;
+                e.target.classList.add('colored');
+            }
             isFirstInBoxSeries = false;
         }
         isMouseDownTriggered = true;
@@ -79,8 +91,11 @@ function setDrawModeToClickDragHold() {
     grid.addEventListener('mouseover', grid.fnMouseOverDrag = function (e) {
         e.preventDefault();
         if (isMouseDownTriggered === true) {
-            let color = getColorAccordingToPenMode(e.target.style.backgroundColor);
-            e.target.style.backgroundColor = color;
+            let color = getColorAccordingToPenMode(e);
+            if (color !== undefined) {
+                e.target.style.backgroundColor = color;
+                e.target.classList.add('colored');
+            }
         }
     });
 }
@@ -103,9 +118,9 @@ function rgbToHex(r, g, b) {
 
 function getDarkerColor(col, amt) {
     let r = col.substring(4, col.indexOf(","));
-    col = col.slice(col.indexOf(",")+1);
+    col = col.slice(col.indexOf(",") + 1);
     let g = col.substring(1, col.indexOf(","));
-    col = col.slice(col.indexOf(",")+1);
+    col = col.slice(col.indexOf(",") + 1);
     let b = col.substring(1, col.indexOf(")"));
     col = rgbToHex(+r, +g, +b);
 
@@ -116,9 +131,9 @@ function getDarkerColor(col, amt) {
         usePound = true;
     }
 
-    let R = parseInt(col.substring(0,2),16);
-    let G = parseInt(col.substring(2,4),16);
-    let B = parseInt(col.substring(4,6),16);
+    let R = parseInt(col.substring(0, 2), 16);
+    let G = parseInt(col.substring(2, 4), 16);
+    let B = parseInt(col.substring(4, 6), 16);
 
     // to make the colour less bright than the input
     // change the following three "+" symbols to "-"
@@ -135,14 +150,14 @@ function getDarkerColor(col, amt) {
     if (B > 255) B = 255;
     else if (B < 0) B = 0;
 
-    var RR = ((R.toString(16).length==1)?"0"+R.toString(16):R.toString(16));
-    var GG = ((G.toString(16).length==1)?"0"+G.toString(16):G.toString(16));
-    var BB = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
+    var RR = ((R.toString(16).length == 1) ? "0" + R.toString(16) : R.toString(16));
+    var GG = ((G.toString(16).length == 1) ? "0" + G.toString(16) : G.toString(16));
+    var BB = ((B.toString(16).length == 1) ? "0" + B.toString(16) : B.toString(16));
 
-    return (usePound?"#":"") + RR + GG + BB;
+    return (usePound ? "#" : "") + RR + GG + BB;
 }
 
-function getColorAccordingToPenMode(targetCurrentColor) {
+function getColorAccordingToPenMode(e) {
     if (document.getElementById("colored-pen").checked) {
         let color = document.getElementById("penColorWell").value;
         return color;
@@ -152,16 +167,23 @@ function getColorAccordingToPenMode(targetCurrentColor) {
         return color;
     }
     else if (document.getElementById("shader-pen").checked) {
-        let color = getDarkerColor(targetCurrentColor, 6);
-        return color;
+        if (e.target.classList.contains('colored')) {
+            let color = getDarkerColor(e.target.style.backgroundColor, 6);
+            return color;
+        }
     }
     else if (document.getElementById("lightener-pen").checked) {
-        let color = getDarkerColor(targetCurrentColor, -6);
-        return color;
+        if (e.target.classList.contains('colored')) {
+            let color = getDarkerColor(e.target.style.backgroundColor, -6);
+            return color;
+        }
     }
     else if (document.getElementById("eraser-pen").checked) {
-        let color = getGridBackgroundColor();
-        return color;
+        if (e.target.classList.contains('colored')) {
+            let color = getGridBackgroundColor();
+            e.target.classList.remove('colored');
+            return color;
+        }
     }
 }
 
