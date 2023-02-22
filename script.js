@@ -25,14 +25,14 @@ function setDrawModeToClickDragRelease() {
             sustainColoring = false;
         }
         console.log(e.target);
-        let color = getColorAccordingToPenMode();
+        let color = getColorAccordingToPenMode(e.target.style.backgroundColor);
         e.target.style.backgroundColor = color;
     });
 
     grid.addEventListener('mouseover', grid.fnMouseOverRelease = function (e) {
         e.preventDefault();
         if (sustainColoring === true) {
-            let color = getColorAccordingToPenMode();
+            let color = getColorAccordingToPenMode(e.target.style.backgroundColor);
             e.target.style.backgroundColor = color;
         }
     });
@@ -45,7 +45,7 @@ function setDrawModeToHover() {
     // Add unique event listeners
     grid.addEventListener('mouseover', grid.fnMouseOverHover = function (e) {
         e.preventDefault();
-        let color = getColorAccordingToPenMode();
+        let color = getColorAccordingToPenMode(e.target.style.backgroundColor);
         e.target.style.backgroundColor = color;
     });
 }
@@ -64,7 +64,7 @@ function setDrawModeToClickDragHold() {
         e.preventDefault();
 
         if (isFirstInBoxSeries) {
-            let color = getColorAccordingToPenMode();
+            let color = getColorAccordingToPenMode(e.target.style.backgroundColor);
             e.target.style.backgroundColor = color;
             isFirstInBoxSeries = false;
         }
@@ -79,7 +79,7 @@ function setDrawModeToClickDragHold() {
     grid.addEventListener('mouseover', grid.fnMouseOverDrag = function (e) {
         e.preventDefault();
         if (isMouseDownTriggered === true) {
-            let color = getColorAccordingToPenMode();
+            let color = getColorAccordingToPenMode(e.target.style.backgroundColor);
             e.target.style.backgroundColor = color;
         }
     });
@@ -97,31 +97,52 @@ function getGridBackgroundColor() {
     return grid.style.backgroundColor;
 }
 
-function getLighterColor(color, percent) {
-    var R = parseInt(color.substring(1, 3), 16);
-    var G = parseInt(color.substring(3, 5), 16);
-    var B = parseInt(color.substring(5, 7), 16);
-
-    R = parseInt(R * (100 + percent) / 100);
-    G = parseInt(G * (100 + percent) / 100);
-    B = parseInt(B * (100 + percent) / 100);
-
-    R = (R < 255) ? R : 255;
-    G = (G < 255) ? G : 255;
-    B = (B < 255) ? B : 255;
-
-    R = Math.round(R)
-    G = Math.round(G)
-    B = Math.round(B)
-
-    var RR = ((R.toString(16).length == 1) ? "0" + R.toString(16) : R.toString(16));
-    var GG = ((G.toString(16).length == 1) ? "0" + G.toString(16) : G.toString(16));
-    var BB = ((B.toString(16).length == 1) ? "0" + B.toString(16) : B.toString(16));
-
-    return "#" + RR + GG + BB;
+function rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
 
-function getColorAccordingToPenMode() {
+function getDarkerColor(col, amt) {
+    let r = col.substring(4, col.indexOf(","));
+    col = col.slice(col.indexOf(",")+1);
+    let g = col.substring(1, col.indexOf(","));
+    col = col.slice(col.indexOf(",")+1);
+    let b = col.substring(1, col.indexOf(")"));
+    col = rgbToHex(+r, +g, +b);
+
+    let usePound = false;
+
+    if (col[0] == "#") {
+        col = col.slice(1);
+        usePound = true;
+    }
+
+    let R = parseInt(col.substring(0,2),16);
+    let G = parseInt(col.substring(2,4),16);
+    let B = parseInt(col.substring(4,6),16);
+
+    // to make the colour less bright than the input
+    // change the following three "+" symbols to "-"
+    R = R - amt;
+    G = G - amt;
+    B = B - amt;
+
+    if (R > 255) R = 255;
+    else if (R < 0) R = 0;
+
+    if (G > 255) G = 255;
+    else if (G < 0) G = 0;
+
+    if (B > 255) B = 255;
+    else if (B < 0) B = 0;
+
+    var RR = ((R.toString(16).length==1)?"0"+R.toString(16):R.toString(16));
+    var GG = ((G.toString(16).length==1)?"0"+G.toString(16):G.toString(16));
+    var BB = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
+
+    return (usePound?"#":"") + RR + GG + BB;
+}
+
+function getColorAccordingToPenMode(targetCurrentColor) {
     if (document.getElementById("colored-pen").checked) {
         let color = document.getElementById("penColorWell").value;
         return color;
@@ -131,10 +152,12 @@ function getColorAccordingToPenMode() {
         return color;
     }
     else if (document.getElementById("shader-pen").checked) {
-        let color = getDarkerColor();
+        let color = getDarkerColor(targetCurrentColor, 6);
+        return color;
     }
     else if (document.getElementById("lightener-pen").checked) {
-        let color = getLighterColor();
+        let color = getDarkerColor(targetCurrentColor, -6);
+        return color;
     }
     else if (document.getElementById("eraser-pen").checked) {
         let color = getGridBackgroundColor();
@@ -255,7 +278,7 @@ gridBackgroundColorWell.addEventListener('input', function (e) {
     grid.style.backgroundColor = gridBackgroundColorWell.value;
 });
 
-/*#887272 for gridlines and #F0F0F0 for bg */
+/*#887272 for gridlines and #F0F0F0 for bg #ffe5e5 for background*/
 
 /* When shader pen is activated how does it colour in? It uses the target for which the color selection is invoked. */
 

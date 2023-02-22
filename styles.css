@@ -75,10 +75,19 @@ div[name="size-options"] {
 }
 
 
-.option-container {
+.option-container[name="option-container"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+[name="bgColor-option-container"] {
+    display: flex;
+    align-items: center;
+}
+
+#bgColorWell {
+    margin: auto;
 }
 
 .grid-size.options-container {
