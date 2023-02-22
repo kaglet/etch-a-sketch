@@ -166,6 +166,9 @@ function addDiv(grid, calculatedSize) {
     let div = document.createElement('div');
     div.style.height = calculatedSize + "px";
     div.style.width = calculatedSize + "px";
+
+    let gridLinesColorWell = document.getElementById('grid-lines-color-well');
+    div.style.border = "1px solid " + gridLinesColorWell.value;
     //div.style.backgroundColor = grid.style.backgroundColor;
 
     grid.appendChild(div);
@@ -225,16 +228,17 @@ drawModeOptionsList.forEach(drawModeOption => drawModeOption.addEventListener('c
 
 // Color in both cases separately
 let gridLinesColorWell = document.getElementById('grid-lines-color-well');
-let gridDivs = document.querySelectorAll('.grid div');
 gridLinesColorWell.addEventListener('input', function (e) {
     // e.preventDefault();
+    let gridDivs = document.querySelectorAll('.grid div');
     gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);
 });
 
 let gridLinesToggle = document.getElementById('grid-lines-toggle');
-let gridLinesPresent = false;
+let gridLinesPresent = true;
 
 gridLinesToggle.addEventListener('click', function () {
+    let gridDivs = document.querySelectorAll('.grid div');
     if (gridLinesPresent) {
         gridDivs.forEach(div => div.style.border = '0px');
         gridLinesPresent = false;
