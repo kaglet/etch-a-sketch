@@ -25,13 +25,13 @@ function setDrawModeToClickDragRelease() {
             sustainColoring = false;
         }
         console.log(e.target);
-        getColorAccordingToPenMode(e);
+        colorAccordingToPenMode(e);
     });
 
     grid.addEventListener('mouseover', grid.fnMouseOverRelease = function (e) {
         e.preventDefault();
         if (sustainColoring === true) {
-            getColorAccordingToPenMode(e);
+            colorAccordingToPenMode(e);
         }
     });
 }
@@ -43,7 +43,7 @@ function setDrawModeToHover() {
     // Add unique event listeners
     grid.addEventListener('mouseover', grid.fnMouseOverHover = function (e) {
         e.preventDefault();
-        getColorAccordingToPenMode(e);
+        colorAccordingToPenMode(e);
     });
 }
 
@@ -61,7 +61,7 @@ function setDrawModeToClickDragHold() {
         e.preventDefault();
 
         if (isFirstInBoxSeries) {
-            getColorAccordingToPenMode(e);
+            colorAccordingToPenMode(e);
             isFirstInBoxSeries = false;
         }
         isMouseDownTriggered = true;
@@ -75,7 +75,7 @@ function setDrawModeToClickDragHold() {
     grid.addEventListener('mouseover', grid.fnMouseOverDrag = function (e) {
         e.preventDefault();
         if (isMouseDownTriggered === true) {
-            getColorAccordingToPenMode(e);
+            colorAccordingToPenMode(e);
         }
     });
 }
@@ -137,7 +137,7 @@ function getDarkerColor(col, amt) {
     return (usePound ? "#" : "") + RR + GG + BB;
 }
 
-function getColorAccordingToPenMode(e) {
+function colorAccordingToPenMode(e) {
     if (document.getElementById("colored-pen").checked) {
         let color = document.getElementById("penColorWell").value;
         e.target.style.backgroundColor = color;
@@ -197,7 +197,7 @@ function addDiv(grid, calculatedSize) {
     div.style.width = calculatedSize + "px";
 
     let gridLinesColorWell = document.getElementById('grid-lines-color-well');
-    div.style.border = "1px solid " + gridLinesColorWell.value;
+    // div.style.border = "1px solid " + gridLinesColorWell.value;
     //div.style.backgroundColor = grid.style.backgroundColor;
 
     grid.appendChild(div);
@@ -244,45 +244,49 @@ function populateGrid() {
     }
 }
 
-let grid = createGrid();
-const gridContainerDiv = document.querySelector('.grid-container');
-gridContainerDiv.appendChild(grid);
-populateGrid();
-
-let gridSizeButton = document.querySelector('button.grid-size');
-gridSizeButton.addEventListener('click', populateGrid);
-
-let drawModeOptionsList = document.querySelectorAll('input[name="draw-mode"]');
-drawModeOptionsList.forEach(drawModeOption => drawModeOption.addEventListener('click', setDrawMode));
-
-// Color in both cases separately
-let gridLinesColorWell = document.getElementById('grid-lines-color-well');
-gridLinesColorWell.addEventListener('input', function (e) {
-    // e.preventDefault();
-    let gridDivs = document.querySelectorAll('.grid div');
-    gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);
-});
-
-let gridLinesToggle = document.getElementById('grid-lines-toggle');
-let gridLinesPresent = true;
-
-gridLinesToggle.addEventListener('click', function () {
-    let gridDivs = document.querySelectorAll('.grid div');
-    if (gridLinesPresent) {
-        gridDivs.forEach(div => div.style.border = '0px');
-        gridLinesPresent = false;
-    }
-    else {
+function setupPage() {
+    let grid = createGrid();
+    const gridContainerDiv = document.querySelector('.grid-container');
+    gridContainerDiv.appendChild(grid);
+    populateGrid();
+    
+    let gridSizeButton = document.querySelector('button.grid-size');
+    gridSizeButton.addEventListener('click', populateGrid);
+    
+    let drawModeOptionsList = document.querySelectorAll('input[name="draw-mode"]');
+    drawModeOptionsList.forEach(drawModeOption => drawModeOption.addEventListener('click', setDrawMode));
+    
+    // Color in both cases separately
+    let gridLinesColorWell = document.getElementById('grid-lines-color-well');
+    gridLinesColorWell.addEventListener('input', function (e) {
+        // e.preventDefault();
+        let gridDivs = document.querySelectorAll('.grid div');
         gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);
-        gridLinesPresent = true;
-    }
-});
+    });
+    
+    let gridLinesToggle = document.getElementById('grid-lines-toggle');
+    let gridLinesPresent = false;
+    
+    gridLinesToggle.addEventListener('click', function () {
+        let gridDivs = document.querySelectorAll('.grid div');
+        if (gridLinesPresent) {
+            gridDivs.forEach(div => div.style.border = '0px');
+            gridLinesPresent = false;
+        }
+        else {
+            gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);
+            gridLinesPresent = true;
+        }
+    });
+    
+    let gridBackgroundColorWell = document.getElementById('bgColorWell');
+    gridBackgroundColorWell.addEventListener('input', function (e) {
+        // e.preventDefault();
+        grid.style.backgroundColor = gridBackgroundColorWell.value;
+    });
+}
 
-let gridBackgroundColorWell = document.getElementById('bgColorWell');
-gridBackgroundColorWell.addEventListener('input', function (e) {
-    // e.preventDefault();
-    grid.style.backgroundColor = gridBackgroundColorWell.value;
-});
+window.addEventListener('load', setupPage);
 
 /*#887272 for gridlines and #F0F0F0 for bg #ffe5e5 for background*/
 
