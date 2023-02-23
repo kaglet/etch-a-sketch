@@ -25,19 +25,13 @@ function setDrawModeToClickDragRelease() {
             sustainColoring = false;
         }
         console.log(e.target);
-        let color = getColorAccordingToPenMode(e);
-        if (color !== undefined) {
-            e.target.style.backgroundColor = color;
-        }
+        getColorAccordingToPenMode(e);
     });
 
     grid.addEventListener('mouseover', grid.fnMouseOverRelease = function (e) {
         e.preventDefault();
         if (sustainColoring === true) {
-            let color = getColorAccordingToPenMode(e);
-            if (color !== undefined) {
-                e.target.style.backgroundColor = color;
-            }
+            getColorAccordingToPenMode(e);
         }
     });
 }
@@ -49,10 +43,7 @@ function setDrawModeToHover() {
     // Add unique event listeners
     grid.addEventListener('mouseover', grid.fnMouseOverHover = function (e) {
         e.preventDefault();
-        let color = getColorAccordingToPenMode(e);
-        if (color !== undefined) {
-            e.target.style.backgroundColor = color;
-        }
+        getColorAccordingToPenMode(e);
     });
 }
 
@@ -70,10 +61,7 @@ function setDrawModeToClickDragHold() {
         e.preventDefault();
 
         if (isFirstInBoxSeries) {
-            let color = getColorAccordingToPenMode(e);
-            if (color !== undefined) {
-                e.target.style.backgroundColor = color;
-            }
+            getColorAccordingToPenMode(e);
             isFirstInBoxSeries = false;
         }
         isMouseDownTriggered = true;
@@ -87,10 +75,7 @@ function setDrawModeToClickDragHold() {
     grid.addEventListener('mouseover', grid.fnMouseOverDrag = function (e) {
         e.preventDefault();
         if (isMouseDownTriggered === true) {
-            let color = getColorAccordingToPenMode(e);
-            if (color !== undefined) {
-                e.target.style.backgroundColor = color;
-            }
+            getColorAccordingToPenMode(e);
         }
     });
 }
@@ -155,33 +140,33 @@ function getDarkerColor(col, amt) {
 function getColorAccordingToPenMode(e) {
     if (document.getElementById("colored-pen").checked) {
         let color = document.getElementById("penColorWell").value;
+        e.target.style.backgroundColor = color;
         e.target.classList.add('colored');
-        return color;
     }
     else if (document.getElementById("randomized-pen").checked) {
         let color = getRandomizedColor();
+        e.target.style.backgroundColor = color;
         e.target.classList.add('colored');
-        return color;
     }
     else if (document.getElementById("shader-pen").checked) {
         if (e.target.classList.contains('colored')) {
             let color = getDarkerColor(e.target.style.backgroundColor, 6);
+            e.target.style.backgroundColor = color;
             e.target.classList.add('colored');
-            return color;
         }
     }
     else if (document.getElementById("lightener-pen").checked) {
         if (e.target.classList.contains('colored')) {
             let color = getDarkerColor(e.target.style.backgroundColor, -6);
+            e.target.style.backgroundColor = color;
             e.target.classList.add('colored');
-            return color;
         }
     }
     else if (document.getElementById("eraser-pen").checked) {
         if (e.target.classList.contains('colored')) {
             let color = getGridBackgroundColor();
+            e.target.style.backgroundColor = "";
             e.target.classList.remove('colored');
-            return color;
         }
     }
 }
