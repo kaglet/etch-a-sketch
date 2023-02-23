@@ -1,3 +1,5 @@
+let gridLinesPresent = false;
+
 function removeGridEventListeners(grid) {
     // Remove all grid event listeners that might be active
     grid.removeEventListener('mousedown', grid.fnMouseDown);
@@ -242,6 +244,9 @@ function populateGrid() {
             grid = addDiv(grid, calculatedSize);
         }
     }
+    let gridLinesToggle = document.getElementById('grid-lines-toggle');
+    gridLinesToggle.checked = false;
+    gridLinesPresent = false;
 }
 
 function setupPage() {
@@ -259,13 +264,13 @@ function setupPage() {
     // Color in both cases separately
     let gridLinesColorWell = document.getElementById('grid-lines-color-well');
     gridLinesColorWell.addEventListener('input', function (e) {
-        // e.preventDefault();
-        let gridDivs = document.querySelectorAll('.grid div');
-        gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);
+        if (gridLinesToggle.checked === true) {
+            let gridDivs = document.querySelectorAll('.grid div');
+            gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);        
+        }
     });
     
     let gridLinesToggle = document.getElementById('grid-lines-toggle');
-    let gridLinesPresent = false;
     
     gridLinesToggle.addEventListener('click', function () {
         let gridDivs = document.querySelectorAll('.grid div');
@@ -281,9 +286,10 @@ function setupPage() {
     
     let gridBackgroundColorWell = document.getElementById('bgColorWell');
     gridBackgroundColorWell.addEventListener('input', function (e) {
-        // e.preventDefault();
-        grid.style.backgroundColor = gridBackgroundColorWell.value;
+            grid.style.backgroundColor = gridBackgroundColorWell.value;
     });
+
+    setDrawModeToClickDragHold();
 }
 
 window.addEventListener('load', setupPage);
