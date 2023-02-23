@@ -28,7 +28,6 @@ function setDrawModeToClickDragRelease() {
         let color = getColorAccordingToPenMode(e);
         if (color !== undefined) {
             e.target.style.backgroundColor = color;
-            e.target.classList.add('colored');
         }
     });
 
@@ -38,7 +37,6 @@ function setDrawModeToClickDragRelease() {
             let color = getColorAccordingToPenMode(e);
             if (color !== undefined) {
                 e.target.style.backgroundColor = color;
-                e.target.classList.add('colored');
             }
         }
     });
@@ -54,7 +52,6 @@ function setDrawModeToHover() {
         let color = getColorAccordingToPenMode(e);
         if (color !== undefined) {
             e.target.style.backgroundColor = color;
-            e.target.classList.add('colored');
         }
     });
 }
@@ -76,7 +73,6 @@ function setDrawModeToClickDragHold() {
             let color = getColorAccordingToPenMode(e);
             if (color !== undefined) {
                 e.target.style.backgroundColor = color;
-                e.target.classList.add('colored');
             }
             isFirstInBoxSeries = false;
         }
@@ -94,7 +90,6 @@ function setDrawModeToClickDragHold() {
             let color = getColorAccordingToPenMode(e);
             if (color !== undefined) {
                 e.target.style.backgroundColor = color;
-                e.target.classList.add('colored');
             }
         }
     });
@@ -160,21 +155,25 @@ function getDarkerColor(col, amt) {
 function getColorAccordingToPenMode(e) {
     if (document.getElementById("colored-pen").checked) {
         let color = document.getElementById("penColorWell").value;
+        e.target.classList.add('colored');
         return color;
     }
     else if (document.getElementById("randomized-pen").checked) {
         let color = getRandomizedColor();
+        e.target.classList.add('colored');
         return color;
     }
     else if (document.getElementById("shader-pen").checked) {
         if (e.target.classList.contains('colored')) {
             let color = getDarkerColor(e.target.style.backgroundColor, 6);
+            e.target.classList.add('colored');
             return color;
         }
     }
     else if (document.getElementById("lightener-pen").checked) {
         if (e.target.classList.contains('colored')) {
             let color = getDarkerColor(e.target.style.backgroundColor, -6);
+            e.target.classList.add('colored');
             return color;
         }
     }
