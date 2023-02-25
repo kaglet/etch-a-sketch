@@ -83,20 +83,10 @@ div[name="size-options"] {
     align-items: center;
 }
 
-[name="bgColor-option-container"] {
-    display: flex;
-    align-items: center;
-}
-
-#bgColorWell {
-    margin: auto;
-}
-
 .grid-size.options-container {
     padding: 10px 20px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     gap: 10px;
     align-items: center;
     text-align: center;
@@ -110,4 +100,10 @@ button {
     display: flex;
     justify-content: center;
 }
+
+/* [name="bgColor-option-container"] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} */
 
