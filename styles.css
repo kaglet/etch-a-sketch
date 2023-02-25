@@ -16,8 +16,8 @@ body {
 .grid {
     display: flex;
     flex-wrap: wrap;
-    height: 800px;
-    width: 800px;
+    height: 700px;
+    width: 700px;
     background-color: navy;
     flex-shrink: 0;
 }
@@ -35,7 +35,7 @@ legend {
     text-align: center;
 }
 
-form[name="options"] fieldset {
+div[name="options"] fieldset {
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -51,16 +51,15 @@ h1 {
 .main-content {
     display: flex;
     justify-content: center;
-    gap: 190px;
+    gap: 100px;
 }
 
-form[name="options"] {
+div[name="options"] {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
     align-items: center;
-    padding-top: 63px;
 }
 
 div[name="size-options"] {
@@ -73,6 +72,8 @@ div[name="size-options"] {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -94,8 +95,11 @@ div[name="size-options"] {
 .grid-size.options-container {
     padding: 10px 20px;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 10px;
     align-items: center;
+    text-align: center;
 }
 
 button {
@@ -106,3 +110,4 @@ button {
     display: flex;
     justify-content: center;
 }
+

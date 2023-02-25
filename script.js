@@ -240,7 +240,7 @@ function populateGrid() {
     clearGrid(grid);
 
     let numberOfDivs = getNumberOfDivs();
-    const gridDimensions = 800;
+    const gridDimensions = 700;
 
     for (let i = 0; i < numberOfDivs; i++) {
         for (let j = 0; j < numberOfDivs; j++) {
@@ -257,8 +257,7 @@ function populateGrid() {
 function setupPage() {
     let grid = createGrid();
     const gridContainerDiv = document.querySelector('.grid-container');
-    const generalOptions = document.getElementById('general-options');
-    gridContainerDiv.insertBefore(grid, generalOptions);
+    gridContainerDiv.appendChild(grid);
     populateGrid();
     
     let gridSizeButton = document.querySelector('button.grid-size');
