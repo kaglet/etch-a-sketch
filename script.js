@@ -26,7 +26,6 @@ function setDrawModeToClickDragRelease() {
         } else {
             sustainColoring = false;
         }
-        console.log(e.target);
         colorAccordingToPenMode(e);
     });
 
@@ -186,6 +185,12 @@ function setDrawMode(e) {
 
 function getNumberOfDivs() {
     let gridSizeInput = document.querySelector('input#grid-size');
+    if (gridSizeInput.value > 100) {
+        gridSizeInput.value = 100;
+    }
+    else if (gridSizeInput.value > 100){
+        gridSizeInput.value = 0;
+    }
     return gridSizeInput.value;
 }
 
