@@ -7,10 +7,10 @@
 }
 
 body {
-    padding: 40px 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    background-color: rgb(0, 0, 0);
 }
 
 .grid {
@@ -35,6 +35,10 @@ legend {
     text-align: center;
 }
 
+legend, .options-container label {
+    font-weight: 600;
+}
+
 div[name="options"] fieldset {
     width: 300px;
     display: flex;
@@ -46,12 +50,17 @@ div[name="options"] fieldset {
 
 h1 {
     text-align: center;
+    font-family: 'Press Start 2P';
+    color: whitesmoke;
+    font-size: 50px;
+    padding: 20px;
 }
 
 .main-content {
     display: flex;
     justify-content: center;
     gap: 100px;
+    padding: 20px 0px 0px 0px;
 }
 
 div[name="options"] {
@@ -76,6 +85,10 @@ div[name="size-options"] {
     align-items: center;
 }
 
+.options-container {
+    background-color: grey;
+    font-family: 'Urbanist';
+}
 
 .option-container[name="option-container"] {
     display: flex;
@@ -86,10 +99,16 @@ div[name="size-options"] {
 .grid-size.options-container {
     padding: 10px 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
     align-items: center;
     text-align: center;
+}
+
+.grid-size.options-container div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 button {
@@ -101,9 +120,20 @@ button {
     justify-content: center;
 }
 
-/* [name="bgColor-option-container"] {
+#footer {
     display: flex;
+    flex-grow: 1;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-} */
+    gap: 10px;
+    color: white;
+    font-family: 'Urbanist';
+    margin-top: 40px;
+    font-size: 17px;
+}
+
+#footer a {
+    font-size: 25px;
+    color: white;
+}
 

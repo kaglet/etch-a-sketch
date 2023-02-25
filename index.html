@@ -7,6 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./script.js" defer></script>
     <link href="./styles.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/fbeeabe0fc.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Blinker:wght@400;800&family=Carter+One&family=Josefin+Sans&family=Labrada:ital,wght@0,400;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Macondo&family=Press+Start+2P&family=Urbanist:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <title>Etch-A-Sketch</title>
 </head>
 
@@ -17,9 +25,11 @@
         <div name="options">
             <div name="size-options">
                 <fieldset class="grid-size options-container" name="grid-size-options">
-                    <label for="grid-size">Choose the grid size: </label>
-                    <input id="grid-size" type="number" min="1" max="100" name="grid-size" value="25">
-                    <button class="grid-size selection">Enter</button>
+                    <label for="grid-size">Choose The Canvas Size </label>
+                    <div>
+                        <input id="grid-size" type="number" min="1" max="100" name="grid-size" value="25">
+                        <button class="grid-size selection">Enter</button>
+                    </div>
                 </fieldset>
             </div>
 
@@ -75,7 +85,7 @@
             <fieldset class="canvas-tools options-container" name="canvas-tools">
                 <legend>Canvas Tools</legend>
                 <div class="option-container" name="option-container">
-                    <label>Grid Lines</label>
+                    <label>Guidelines</label>
                     <input type="color" id="grid-lines-color-well" value="#000000">
                     <input type="checkbox" name="grid-lines" id="grid-lines-toggle">
                 </div>
@@ -86,13 +96,18 @@
                 </div>
 
                 <div id="general-options">
-                    <button id="erase-grid">Clear Grid</button>
+                    <button id="erase-grid">Clear Canvas</button>
                 </div>
             </fieldset>
         </div>
 
         <div class="grid-container">
         </div>
+    </div>
+
+    <div id="footer">
+        Copyright © 2023 kaglet
+        <a href="https://github.com/kaglet/etch-a-sketch"><i class="fa-brands fa-github"></i></a>
     </div>
 
 </body>
