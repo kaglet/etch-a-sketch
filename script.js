@@ -54,6 +54,7 @@ function setDrawModeToClickDragHold() {
     let isFirstInBoxSeries = true;
 
     let grid = document.querySelector('div.grid');
+    let body = document.querySelector('body');
 
     removeGridEventListeners(grid);
 
@@ -68,7 +69,7 @@ function setDrawModeToClickDragHold() {
         isMouseDownTriggered = true;
     });
 
-    grid.addEventListener('mouseup', grid.fnMouseUp = function (e) {
+    body.addEventListener('mouseup', grid.fnMouseUp = function (e) {
         isMouseDownTriggered = false;
         isFirstInBoxSeries = true;
     });
