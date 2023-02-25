@@ -235,7 +235,7 @@ function populateGrid() {
     clearGrid(grid);
 
     let numberOfDivs = getNumberOfDivs();
-    const gridDimensions = 900;
+    const gridDimensions = 800;
 
     for (let i = 0; i < numberOfDivs; i++) {
         for (let j = 0; j < numberOfDivs; j++) {
@@ -252,7 +252,8 @@ function populateGrid() {
 function setupPage() {
     let grid = createGrid();
     const gridContainerDiv = document.querySelector('.grid-container');
-    gridContainerDiv.appendChild(grid);
+    const generalOptions = document.getElementById('general-options');
+    gridContainerDiv.insertBefore(grid, generalOptions);
     populateGrid();
     
     let gridSizeButton = document.querySelector('button.grid-size');
@@ -290,6 +291,22 @@ function setupPage() {
     });
 
     setDrawModeToClickDragHold();
+
+    let eraseGridButton = document.getElementById('erase-grid');
+    eraseGridButton.addEventListener('click', eraseGrid);
+}
+
+function eraseGrid() {
+    let gridLinesToggle = document.getElementById('grid-lines-toggle');
+    let gridDivs = document.querySelectorAll('.grid div');
+    gridDivs.forEach(div => {
+        div.style.backgroundColor = "";
+        div.classList.remove('colored');
+
+        div.style.border = "";
+        gridLinesToggle.checked = false;
+        gridLinesPresent = false;
+    });   
 }
 
 window.addEventListener('load', setupPage);

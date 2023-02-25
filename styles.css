@@ -16,8 +16,8 @@ body {
 .grid {
     display: flex;
     flex-wrap: wrap;
-    height: 900px;
-    width: 900px;
+    height: 800px;
+    width: 800px;
     background-color: navy;
     flex-shrink: 0;
 }
@@ -57,7 +57,8 @@ h1 {
 form[name="options"] {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 40px;
     align-items: center;
     padding-top: 63px;
 }
@@ -99,4 +100,9 @@ div[name="size-options"] {
 
 button {
     padding: 5px 10px;
+}
+
+#general-options {
+    display: flex;
+    justify-content: center;
 }
