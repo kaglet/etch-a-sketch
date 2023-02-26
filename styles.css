@@ -154,7 +154,7 @@ input[type="radio"], input[type="checkbox"] {
     height: 15px;  
     padding: 2px;
     background-clip: content-box;
-    border: 2px solid #060c3b;
+    border: 2px solid #000000;
     border-radius: 50%;
 }
 
