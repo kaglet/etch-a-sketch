@@ -10,7 +10,7 @@ body {
     padding: 20px 0px 0px 0px;
     display: flex;
     flex-direction: column;
-    background-color: rgb(0, 0, 0);
+    background-color: whitesmoke;
 }
 
 .grid {
@@ -131,7 +131,7 @@ button {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    color: white;
+    color: black;
     font-family: 'Urbanist', sans-serif;
     margin-top: 40px;
     font-size: 17px;
@@ -139,7 +139,7 @@ button {
 
 #footer a {
     font-size: 25px;
-    color: white;
+    color: black;
 }
 
 button, input[type="number"] {
