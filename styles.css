@@ -39,6 +39,10 @@ legend, .options-container label {
     font-weight: 600;
 }
 
+legend, .grid-size.options-container label {
+    font-size: 18px;
+}
+
 div[name="options"] fieldset {
     width: 300px;
     display: flex;
@@ -67,7 +71,7 @@ div[name="options"] {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 30px;
+    gap: 25px;
     align-items: center;
 }
 
@@ -87,6 +91,7 @@ div[name="size-options"] {
 
 .options-container {
     background-color: grey;
+    border-width: 4px;
     font-family: 'Urbanist', sans-serif;
 }
 
