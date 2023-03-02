@@ -207,8 +207,14 @@ function addDiv(grid, calculatedSize) {
     div.style.width = calculatedSize + "px";
 
     let gridLinesColorWell = document.getElementById('grid-lines-color-well');
-    // div.style.border = "1px solid " + gridLinesColorWell.value;
-    //div.style.backgroundColor = grid.style.backgroundColor;
+    let gridLinesToggle = document.getElementById('grid-lines-toggle');
+    if (gridLinesToggle.checked === true) {
+        div.style.border = "1px solid " + gridLinesColorWell.value;
+    }
+    else {
+        gridLinesToggle.checked = false;
+        gridLinesPresent = false;
+    }
 
     grid.appendChild(div);
 
@@ -252,9 +258,6 @@ function populateGrid() {
             grid = addDiv(grid, calculatedSize);
         }
     }
-    let gridLinesToggle = document.getElementById('grid-lines-toggle');
-    gridLinesToggle.checked = false;
-    gridLinesPresent = false;
 }
 
 function setupPage() {
@@ -309,10 +312,6 @@ function eraseGrid() {
     gridDivs.forEach(div => {
         div.style.backgroundColor = "";
         div.classList.remove('colored');
-
-        div.style.border = "";
-        gridLinesToggle.checked = false;
-        gridLinesPresent = false;
     });   
 }
 
