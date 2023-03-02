@@ -176,12 +176,12 @@ function colorAccordingToPenMode(e) {
 }
 
 function setDrawMode(e) {
-    if (e.target.value === "Click and Drag (Hold down version)") {
+    if (e.target.value === "click-drag-hold") {
         setDrawModeToClickDragHold();
-    } else if (e.target.value === "Click and Drag (Release up version)") {
+    } else if (e.target.value === "click-drag-release") {
         setDrawModeToClickDragRelease();
     }
-    else if (e.target.value === "Hover Over") {
+    else if (e.target.value === "hover-over") {
         setDrawModeToHover();
     }
 }
