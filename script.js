@@ -168,7 +168,6 @@ function colorAccordingToPenMode(e) {
     }
     else if (document.getElementById("eraser-pen").checked) {
         if (e.target.classList.contains('colored')) {
-            let color = getGridBackgroundColor();
             e.target.style.backgroundColor = "";
             e.target.classList.remove('colored');
         }
@@ -307,7 +306,6 @@ function setupPage() {
 }
 
 function eraseGrid() {
-    let gridLinesToggle = document.getElementById('grid-lines-toggle');
     let gridDivs = document.querySelectorAll('.grid div');
     gridDivs.forEach(div => {
         div.style.backgroundColor = "";
