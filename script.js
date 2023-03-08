@@ -317,37 +317,4 @@ function eraseGrid() {
 
 window.addEventListener('load', setupPage);
 
-/*#887272 for gridlines and #F0F0F0 for bg #ffe5e5 for background*/
-
-/* When shader pen is activated how does it colour in? It uses the target for which the color selection is invoked. */
-
-
-/* WHY IT DOESN'T COLOR FIRST BLOCK
-- mouseover event triggered, reads false as it isn't clicked on yet, once its clicked on isMouseDownTriggered becomes true.
-The catch is that mouseover doesn't trigger again, only on the first hover. Identify the first in a click and hover sequence. First one
-just needs click not click and hover as it is already hovered on.
-
-Maybe use once. Bind to each div element not to the window.*/
-
-/* WHY COLORING IS INCONSISTENT I.e. On mouseup it colors and on mousedown it stops coloring.
-
-Without full release of mouse button it won't know which is triggered maybe. It may color it in, or even not color it in,
-when... (well when does grab icon appear?)
-
-I could say mouseup and mousedown switch roles in a way and get confused along the way when "something" happens*/
-
-/* Unbind event listener from window. There's an issue that onMouseOver it reads as false until its clicked which is a good thing, of course it won't color
-until both are satisfied but it will jump into the debugger each time which is really annoying until that condition is satisfied but I can't
-satisfy it since debugger is irritating. On hover it immediately takes me there without giving me a chance to click. So only place the flag
-within the inner part where the if statement is satisfied. */
-/*We don't even need to unbind from window. That's not the problem. We can make sure the color in code executes only when the right div is selected too.*/
-/* Do this by checking the targets properties. Not sure if it was covered, clicking a child element clicks both the child and the parent.
-I believe that was covered. So it does affect the events. Not just the parent is clicked, but the child too. And if they both had the same
-click event then that would be a problem. We don't have that here though.*/
-/* We also never have a break on mouseover. It is constantly on mouseover. */
-
-// let drawMode = getDrawModeOption();
-/* Setup event listener on field for when text is entered, then enter into a different draw mode each time. 
-This allows code to be implemented anytime regardless of the flow of the program. The flow needs to be dynamic not linear anyway. */
-
 
