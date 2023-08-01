@@ -2,6 +2,6 @@
 
 ## Project Description   
 
-A game featuring a pixelated canvas to be sketched on using various pens, as part of [TOP](https://www.theodinproject.com).   
+This is a game featuring a grid to be drawn on using various pens and tools, as part of the open source web development course [The Odin Project](https://www.theodinproject.com).  This is the fourth assignment of the foundations section. 
 
 Find the live preview [here](https://kaglet.github.io/etch-a-sketch/).
