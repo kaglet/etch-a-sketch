@@ -248,7 +248,9 @@ function populateGrid() {
     clearGrid(grid);
 
     let numberOfDivs = getNumberOfDivs();
-    const gridDimensions = 700;
+    // this is only for calculation for populating grid not for grid itself, to make sure the divs match the dimensions of parent
+    // disadvantage is I have to track both dimensions instead of having one global here in the js
+    const gridDimensions = 650;
 
     for (let i = 0; i < numberOfDivs; i++) {
         for (let j = 0; j < numberOfDivs; j++) {
