@@ -19,34 +19,20 @@
 </head>
 
 <body>
-    <h1><span style="color:#e13939">E</span>
-        <span style="color:#35a8ef">t</span>
-        <span style="color:#d82ca2">c</span>
-        <span style="color:#ffb300">h</span>
-        <span style="color:#b1df3c">-</span>
-        <span style="color:#26b40d">A</span>
-        <span style="color:#c0c2be">-</span>    
-        <span style="color:#eb7c2d">S</span>
-        <span style="color:#add42c">k</span>
-        <span style="color:#e32867">e</span>
-        <span style="color:#00ffccd4">t</span>
-        <span style="color:#b243e6c5">c</span>
-        <span style="color:#482eda">h</span>
-    </h1>
 
     <div class="main-content">
         <div name="options">
             <div name="size-options">
-                <fieldset class="grid-size options-container" name="grid-size-options">
+                <div class="grid-size options-container" name="grid-size-options">
                     <label for="grid-size">Choose The Canvas Size </label>
                     <div>
                         <input id="grid-size" type="number" min="1" max="100" name="grid-size" value="25">
                         <button class="grid-size selection">Enter</button>
                     </div>
-                </fieldset>
+                </div>
             </div>
 
-            <fieldset class="draw-mode options-container" name="draw-modes">
+            <div class="draw-mode options-container" name="draw-modes">
                 <legend>Draw Modes</legend>
                 <div class="option-container" name="option-container">
                     <label for="click-drag-hold-mode">Click, Hold and Drag</label>
@@ -64,9 +50,9 @@
                     <label for="hover-over-mode">Hover Over </label>
                     <input type="radio" name="draw-mode" value="hover-over" id="hover-over-mode">
                 </div>
-            </fieldset>
+            </div>
 
-            <fieldset class="draw-tools options-container" name="draw-tools">
+            <div class="draw-tools options-container" name="draw-tools">
                 <legend>Draw Tools</legend>
                 <div class="option-container" name="option-container">
                     <label for="colored-pen">Colored Pen</label>
@@ -95,12 +81,12 @@
                     <label for="eraser-pen">Eraser Pen </label>
                     <input type="radio" id="eraser-pen" name="pen-mode">
                 </div>
-            </fieldset>
+            </div>
 
-            <fieldset class="canvas-tools options-container" name="canvas-tools">
+            <div class="canvas-tools options-container" name="canvas-tools">
                 <legend>Canvas Tools</legend>
                 <div class="option-container" name="option-container">
-                    <label for="grid-lines-toggle">Guidelines</label>
+                    <label for="grid-lines-toggle">Gridlines</label>
                     <input type="color" id="grid-lines-color-well" value="#eea0a0">
                     <input type="checkbox" name="grid-lines" id="grid-lines-toggle">
                 </div>
@@ -113,16 +99,12 @@
                 <div id="general-options">
                     <button id="erase-grid">Clear Canvas</button>
                 </div>
-            </fieldset>
+            </div>
         </div>
 
         <div class="grid-container">
+            <h1>Etch-A-Sketch</h1>
         </div>
-    </div>
-
-    <div id="footer">
-        Copyright © 2023 kaglet
-        <a href="https://github.com/kaglet/etch-a-sketch"><i class="fa-brands fa-github"></i></a>
     </div>
 
 </body>

@@ -10,7 +10,7 @@ body {
     padding: 20px 0px 0px 0px;
     display: flex;
     flex-direction: column;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(2, 2, 56);
 }
 
 .grid {
@@ -43,19 +43,22 @@ legend, .grid-size.options-container label {
     font-size: 18px;
 }
 
-div[name="options"] fieldset {
+div[name="options"] > div, div.grid-size {
     width: 300px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 10px 20px;
     gap: 20px;
+    background-color: rgb(166, 212, 241);
+    border-radius: 10px;
+    border: none;
 }
 
 h1 {
     text-align: center;
     font-family: 'Press Start 2P', fantasy;
-    color: whitesmoke;
+    color: rgb(243, 97, 121);
     font-size: 50px;
     padding: 20px;
 }
@@ -194,7 +197,7 @@ input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 20px;
     width: 20px;
-    background: #000;
+    background: #b12e2e;
     border-radius: 50%;
     cursor: pointer;
 }
