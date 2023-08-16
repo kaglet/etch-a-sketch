@@ -7,7 +7,6 @@
 }
 
 body {
-    padding: 20px 0px 0px 0px;
     display: flex;
     flex-direction: column;
     background-color: rgb(2, 2, 56);
@@ -16,8 +15,8 @@ body {
 .grid {
     display: flex;
     flex-wrap: wrap;
-    height: 700px;
-    width: 700px;
+    height: 650px;
+    width: 650px;
     background-color: navy;
     flex-shrink: 0;
 }
@@ -26,9 +25,6 @@ body {
     margin: 10px 0px;
 }
 
-.grid-size > label {
-    margin: 0px;
-}
 
 legend {
     float: left;
@@ -48,11 +44,18 @@ div[name="options"] > div, div.grid-size {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 10px 20px;
     gap: 20px;
-    background-color: rgb(166, 212, 241);
-    border-radius: 10px;
+    /* background-color: transparent; */
     border: none;
+    height: 100%;
+}
+
+div[name="options"] > div:nth-child(2n) {
+    background-color: #ce6060;
+}
+
+div[name="options"] > div:nth-child(2n + 1) {
+    background-color: #df9898;
 }
 
 h1 {
@@ -67,15 +70,14 @@ h1 {
     display: flex;
     justify-content: center;
     gap: 100px;
-    padding: 20px 0px 0px 0px;
+    height: 100vh;
 }
 
 div[name="options"] {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 25px;
     align-items: center;
+    background-color: azure;
 }
 
 div[name="size-options"] {
@@ -105,7 +107,6 @@ div[name="size-options"] {
 }
 
 .grid-size.options-container {
-    padding: 10px 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
