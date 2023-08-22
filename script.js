@@ -286,24 +286,53 @@ function setupPage() {
     gridLinesToggle.addEventListener('click', function () {
         let gridDivs = document.querySelectorAll('.grid div');
         if (gridLinesPresent) {
-            gridDivs.forEach(div => div.style.border = '0px');
-            gridLinesPresent = false;
+            removeGridLines();
         }
         else {
-            gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);
-            gridLinesPresent = true;
+            addGridLines();
         }
     });
-    
-    // let gridBackgroundColorWell = document.getElementById('bgColorWell');
-    // gridBackgroundColorWell.addEventListener('input', function (e) {
-    //         grid.style.backgroundColor = gridBackgroundColorWell.value;
-    // });
 
     setDrawModeToClickDragHold();
 
     let eraseGridButton = document.getElementById('erase-grid');
     eraseGridButton.addEventListener('click', eraseGrid);
+
+    let resetButton = document.getElementById('reset');
+    resetButton.addEventListener('click', reset);
+}
+
+function removeGridLines() {
+    let gridDivs = document.querySelectorAll('.grid div');
+    gridDivs.forEach(div => div.style.border = '0px');
+    gridLinesPresent = false;
+}
+
+function addGridLines() {
+    let gridLinesColorWell = document.getElementById('grid-lines-color-well');
+    let gridDivs = document.querySelectorAll('.grid div');
+    gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);
+    gridLinesPresent = true;
+}
+
+function reset() {
+    eraseGrid();
+    removeGridLines();
+    let gridLinesToggle = document.getElementById('grid-lines-toggle');
+    gridLinesToggle.checked = false;
+    let drawModeInput = document.getElementById('click-drag-hold-mode');
+    drawModeInput.checked = true;
+    setDrawModeToClickDragHold();
+    let drawToolInput = document.getElementById('colored-pen');
+    drawToolInput.checked = true;
+    let penColorWell = document.getElementById('penColorWell');
+    penColorWell.value = "#ff6161";
+    let gridLinesColorWell = document.getElementById('grid-lines-color-well');
+    gridLinesColorWell.value = "#eea0a0";
+
+    let gridSizeInput = document.querySelector('input#grid-size');
+    gridSizeInput.value = 25;
+    populateGrid();
 }
 
 function eraseGrid() {

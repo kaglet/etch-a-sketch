@@ -53,7 +53,7 @@ div#options > div {
 
 h1 {
     text-align: center;
-    font-family: 'Black Ops One', cursive;
+    font-family: 'Black Ops One', monospace;
     letter-spacing: 0.2rem;
     font-size: 60px;
     color: #ff6161;
@@ -116,6 +116,12 @@ button {
 #general-options {
     display: flex;
     justify-content: center;
+    gap: 3px;
+}
+
+#general-options > button {
+    padding: 0.5rem 0.6rem;
+    flex: 1;
 }
 
 
@@ -130,7 +136,7 @@ input[type="radio"], input[type="checkbox"] {
     padding: 2px;
     background-clip: content-box;
     border: 2px solid #ffffff;
-    border-radius: 50%;
+    border-radius: 30%;
 }
 
 input[type="radio"]:checked, input[type="checkbox"]:checked {
