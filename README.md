@@ -8,5 +8,5 @@ Find the live preview [here](https://kaglet.github.io/etch-a-sketch/).
 
 ## To add in future if I revisit
 
-- Add space placeholder for grid on page load otherwise there is a split second where it is unloaded
-- Mobile support (?)
+- Add space placeholder for grid on page load otherwise there is a split second where it is unloaded.
+- Mobile support (?).
