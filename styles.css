@@ -7,9 +7,7 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(2, 2, 56);
+    background-color: rgb(27, 27, 27);
 }
 
 .grid {
@@ -50,11 +48,7 @@ div[name="options"] > div, div.grid-size {
     height: 100%;
 }
 
-div[name="options"] > div:nth-child(2n) {
-    background-color: #ce6060;
-}
-
-div[name="options"] > div:nth-child(2n + 1) {
+div[name="options"] > div {
     background-color: #df9898;
 }
 
@@ -68,8 +62,6 @@ h1 {
 
 .main-content {
     display: flex;
-    justify-content: center;
-    gap: 100px;
     height: 100vh;
 }
 
