@@ -225,8 +225,8 @@ function createGrid() {
     grid.classList.add('grid');
     grid.setAttribute('id', 'grid');
 
-    let gridBackgroundColorWell = document.getElementById('bgColorWell');
-    grid.style.backgroundColor = gridBackgroundColorWell.value;
+    // let gridBackgroundColorWell = document.getElementById('bgColorWell');
+    grid.style.backgroundColor = "#2a2a2a";
 
     return grid;
 }
@@ -248,9 +248,7 @@ function populateGrid() {
     clearGrid(grid);
 
     let numberOfDivs = getNumberOfDivs();
-    // this is only for calculation for populating grid not for grid itself, to make sure the divs match the dimensions of parent
-    // disadvantage is I have to track both dimensions instead of having one global here in the js
-    const gridDimensions = 650;
+    const gridDimensions = 500;
 
     for (let i = 0; i < numberOfDivs; i++) {
         for (let j = 0; j < numberOfDivs; j++) {
@@ -264,7 +262,8 @@ function populateGrid() {
 function setupPage() {
     let grid = createGrid();
     const gridContainerDiv = document.querySelector('.grid-container');
-    gridContainerDiv.appendChild(grid);
+    const footer = document.querySelector('.footer');
+    gridContainerDiv.insertBefore(grid,footer);
     populateGrid();
     
     let gridSizeButton = document.querySelector('button.grid-size');
@@ -296,10 +295,10 @@ function setupPage() {
         }
     });
     
-    let gridBackgroundColorWell = document.getElementById('bgColorWell');
-    gridBackgroundColorWell.addEventListener('input', function (e) {
-            grid.style.backgroundColor = gridBackgroundColorWell.value;
-    });
+    // let gridBackgroundColorWell = document.getElementById('bgColorWell');
+    // gridBackgroundColorWell.addEventListener('input', function (e) {
+    //         grid.style.backgroundColor = gridBackgroundColorWell.value;
+    // });
 
     setDrawModeToClickDragHold();
 

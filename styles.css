@@ -7,17 +7,18 @@
 }
 
 body {
-    padding: 20px 0px 0px 0px;
+    background-color: rgb(27, 27, 27);
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-    background-color: rgb(0, 0, 0);
+    justify-content: center;
+    gap: 100px;
 }
 
 .grid {
     display: flex;
     flex-wrap: wrap;
-    height: 650px;
-    width: 650px;
+    height: 500px;
+    width: 500px;
     background-color: navy;
     flex-shrink: 0;
 }
@@ -26,59 +27,64 @@ body {
     margin: 10px 0px;
 }
 
-.grid-size > label {
-    margin: 0px;
-}
 
-legend {
-    float: left;
+h2 {
     text-align: center;
 }
 
-legend, .options-container label {
+h2, .options-container label, label[for="grid-size"] {
     font-weight: 600;
 }
 
-legend, .grid-size.options-container label {
-    font-size: 18px;
+h2, .grid-size.options-container label, label[for="grid-size"] {
+    font-size: 22px;
 }
 
-div[name="options"] fieldset {
+div#options > div {
     width: 300px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 10px 20px;
-    gap: 20px;
+    border: none;
+    background-color: #2a2a2a;
+    color: white;
+    font-size: 17px;
 }
 
 h1 {
     text-align: center;
-    font-family: 'Press Start 2P', fantasy;
-    color: whitesmoke;
-    font-size: 50px;
+    font-family: 'Black Ops One', cursive;
+    letter-spacing: 0.2rem;
+    font-size: 60px;
+    color: #ff6161;
     padding: 20px;
 }
 
-.main-content {
-    display: flex;
-    justify-content: center;
-    gap: 100px;
-    padding: 20px 0px 0px 0px;
-}
-
-div[name="options"] {
+div#options {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 25px;
     align-items: center;
+    justify-content: center;
+    gap: 2.2rem;
 }
 
-div[name="size-options"] {
+div#sizing-controls {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 20px;
+}
+
+label[for="grid-size"] {
+    font-family: 'Urbanist', sans-serif;
+    color: #ffffff;
+    align-self: center;
+}
+
+button, input[type="number"] {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 17px;
 }
 
 .grid-container {
@@ -90,34 +96,21 @@ div[name="size-options"] {
 }
 
 .options-container {
-    background-color: grey;
-    border-width: 4px;
     font-family: 'Urbanist', sans-serif;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.option-container[name="option-container"] {
+.option-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.grid-size.options-container {
-    padding: 10px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    text-align: center;
-}
-
-.grid-size.options-container div {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
 }
 
 button {
-    padding: 5px 10px;
+    padding: 0.5em 0.7em;
+    border-radius: 0.7em;
+    font-size: 17px;
 }
 
 #general-options {
@@ -125,26 +118,8 @@ button {
     justify-content: center;
 }
 
-#footer {
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    color: white;
-    font-family: 'Urbanist', sans-serif;
-    margin-top: 40px;
-    font-size: 17px;
-}
 
-#footer a {
-    font-size: 25px;
-    color: white;
-}
-
-button, input[type="number"] {
-    font-family: 'Urbanist', sans-serif;
-}
+/* Input and button styling */
 
 input[type="radio"], input[type="checkbox"] {
     -webkit-appearance: none;
@@ -154,12 +129,12 @@ input[type="radio"], input[type="checkbox"] {
     height: 15px;  
     padding: 2px;
     background-clip: content-box;
-    border: 2px solid #000000;
+    border: 2px solid #ffffff;
     border-radius: 50%;
 }
 
 input[type="radio"]:checked, input[type="checkbox"]:checked {
-    background-color: black;
+    background-color: rgb(255, 255, 255);
 }
 
 input[type="radio"], input[type="checkbox"], input[type="color"], button, i, label {
@@ -172,6 +147,7 @@ button, i {
 
 button:hover {
     transform: scale(1.1);
+    background-color: rgb(209, 209, 209);
 }
 
 i:hover {
@@ -194,7 +170,7 @@ input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 20px;
     width: 20px;
-    background: #000;
+    background: #d0d0d0;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -206,3 +182,13 @@ input[type="range"]::-moz-range-progress {
 }
 
 
+.footer {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+a, i {
+    color: rgb(254, 114, 102);
+    text-decoration: none;
+}

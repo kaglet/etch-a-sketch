@@ -15,115 +15,91 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Blinker:wght@400;800&family=Carter+One&family=Josefin+Sans&family=Labrada:ital,wght@0,400;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Macondo&family=Press+Start+2P&family=Urbanist:wght@400;500;600&display=swap"
         rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
     <title>Etch-A-Sketch</title>
 </head>
 
 <body>
-    <h1><span style="color:#e13939">E</span>
-        <span style="color:#35a8ef">t</span>
-        <span style="color:#d82ca2">c</span>
-        <span style="color:#ffb300">h</span>
-        <span style="color:#b1df3c">-</span>
-        <span style="color:#26b40d">A</span>
-        <span style="color:#c0c2be">-</span>    
-        <span style="color:#eb7c2d">S</span>
-        <span style="color:#add42c">k</span>
-        <span style="color:#e32867">e</span>
-        <span style="color:#00ffccd4">t</span>
-        <span style="color:#b243e6c5">c</span>
-        <span style="color:#482eda">h</span>
-    </h1>
-
-    <div class="main-content">
-        <div name="options">
-            <div name="size-options">
-                <fieldset class="grid-size options-container" name="grid-size-options">
-                    <label for="grid-size">Choose The Canvas Size </label>
-                    <div>
-                        <input id="grid-size" type="number" min="1" max="100" name="grid-size" value="25">
-                        <button class="grid-size selection">Enter</button>
-                    </div>
-                </fieldset>
-            </div>
-
-            <fieldset class="draw-mode options-container" name="draw-modes">
-                <legend>Draw Modes</legend>
-                <div class="option-container" name="option-container">
+        <div id="options">
+            <div class="draw-mode options-container" name="draw-modes">
+                <h2>Draw Modes</h2>
+                <div class="option-container" >
                     <label for="click-drag-hold-mode">Click, Hold and Drag</label>
                     <input type="radio" name="draw-mode" value="click-drag-hold"
                         id="click-drag-hold-mode" checked>
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="click-drag-release-mode">Click, Release and Drag</label>
                     <input type="radio" name="draw-mode" value="click-drag-release"
                         id="click-drag-release-mode">
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="hover-over-mode">Hover Over </label>
                     <input type="radio" name="draw-mode" value="hover-over" id="hover-over-mode">
                 </div>
-            </fieldset>
+            </div>
 
-            <fieldset class="draw-tools options-container" name="draw-tools">
-                <legend>Draw Tools</legend>
-                <div class="option-container" name="option-container">
+            <div class="draw-tools options-container" name="draw-tools">
+                <h2>Draw Tools</h2>
+                <div class="option-container" >
                     <label for="colored-pen">Colored Pen</label>
                     <input type="color" id="penColorWell" value="#ff6161">
                     <input type="radio" id="colored-pen" name="pen-mode" checked>
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="randomized-pen">Randomized Pen </label>
                     <input type="radio" id="randomized-pen" name="pen-mode">
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="shader-pen">Shader Pen </label>
                     <input type="range" name="shader-pen-control" id="shader-pen-control" min="1" max="10" step="1" value="6">
                     <input type="radio" id="shader-pen" name="pen-mode">
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="lightener-pen">Lightener Pen </label>
                     <input type="range" name="lightener-pen-control" id="lightener-pen-control" min="1" max="10" step="1" value="6">
                     <input type="radio" id="lightener-pen" name="pen-mode">
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="eraser-pen">Eraser Pen </label>
                     <input type="radio" id="eraser-pen" name="pen-mode">
                 </div>
-            </fieldset>
+            </div>
 
-            <fieldset class="canvas-tools options-container" name="canvas-tools">
-                <legend>Canvas Tools</legend>
-                <div class="option-container" name="option-container">
-                    <label for="grid-lines-toggle">Guidelines</label>
+            <div class="canvas-tools options-container" name="canvas-tools">
+                <h2>Canvas Tools</h2>
+                <div class="option-container" >
+                    <label for="grid-lines-toggle">Gridlines</label>
                     <input type="color" id="grid-lines-color-well" value="#eea0a0">
                     <input type="checkbox" name="grid-lines" id="grid-lines-toggle">
-                </div>
-
-                <div class="option-container" name="option-container">
-                    <label for="bgColorWell">Background</label>
-                    <input type="color" id="bgColorWell" value="#f7f7f7">
                 </div>
 
                 <div id="general-options">
                     <button id="erase-grid">Clear Canvas</button>
                 </div>
-            </fieldset>
+            </div>
         </div>
 
         <div class="grid-container">
+            <h1>Etch-A-Sketch</h1>
+            <div id="sizing-controls">
+                <label for="grid-size">Choose The Canvas Size: </label>
+                <input id="grid-size" type="number" min="1" max="100" name="grid-size" value="25">
+                <button class="grid-size selection">Enter</button>
+            </div>
+            <div class="footer">
+                Made by
+                <a href="https://github.com/kaglet/etch-a-sketch"><i class="fa-brands fa-github"> </i> kaglet </a>
+            </div>
         </div>
-    </div>
-
-    <div id="footer">
-        Copyright © 2023 kaglet
-        <a href="https://github.com/kaglet/etch-a-sketch"><i class="fa-brands fa-github"></i></a>
-    </div>
 
 </body>
 
