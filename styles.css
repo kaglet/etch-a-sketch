@@ -182,3 +182,13 @@ input[type="range"]::-moz-range-progress {
 }
 
 
+.footer {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+a, i {
+    color: rgb(254, 114, 102);
+    text-decoration: none;
+}

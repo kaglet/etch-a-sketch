@@ -262,7 +262,8 @@ function populateGrid() {
 function setupPage() {
     let grid = createGrid();
     const gridContainerDiv = document.querySelector('.grid-container');
-    gridContainerDiv.appendChild(grid);
+    const footer = document.querySelector('.footer');
+    gridContainerDiv.insertBefore(grid,footer);
     populateGrid();
     
     let gridSizeButton = document.querySelector('button.grid-size');
