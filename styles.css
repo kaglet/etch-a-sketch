@@ -8,13 +8,17 @@
 
 body {
     background-color: rgb(27, 27, 27);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
 }
 
 .grid {
     display: flex;
     flex-wrap: wrap;
-    height: 650px;
-    width: 650px;
+    height: 500px;
+    width: 500px;
     background-color: navy;
     flex-shrink: 0;
 }
@@ -24,58 +28,60 @@ body {
 }
 
 
-legend {
-    float: left;
+h2 {
     text-align: center;
 }
 
-legend, .options-container label {
+h2, .options-container label, label[for="grid-size"] {
     font-weight: 600;
 }
 
-legend, .grid-size.options-container label {
+h2, .grid-size.options-container label, label[for="grid-size"] {
     font-size: 18px;
 }
 
-div[name="options"] > div, div.grid-size {
+div#options > div {
     width: 300px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    gap: 20px;
-    /* background-color: transparent; */
     border: none;
-    height: 100%;
-}
-
-div[name="options"] > div {
-    background-color: #df9898;
+    background-color: #2a2a2a;
+    color: white;
 }
 
 h1 {
     text-align: center;
     font-family: 'Press Start 2P', fantasy;
-    color: rgb(243, 97, 121);
+    color: #ff6161;
     font-size: 50px;
     padding: 20px;
 }
 
-.main-content {
-    display: flex;
-    height: 100vh;
-}
-
-div[name="options"] {
+div#options {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: azure;
+    justify-content: center;
+    gap: 2.2rem;
 }
 
-div[name="size-options"] {
+div#sizing-controls {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 20px;
+}
+
+label[for="grid-size"] {
+    font-family: 'Urbanist', sans-serif;
+    color: #ffffff;
+    align-self: center;
+}
+
+button, input[type="number"] {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: bold;
+    text-align: center;
 }
 
 .grid-container {
@@ -87,33 +93,20 @@ div[name="size-options"] {
 }
 
 .options-container {
-    background-color: grey;
-    border-width: 4px;
     font-family: 'Urbanist', sans-serif;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.option-container[name="option-container"] {
+.option-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.grid-size.options-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    text-align: center;
-}
-
-.grid-size.options-container div {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
 }
 
 button {
-    padding: 5px 10px;
+    padding: 0.8em 1em;
+    border-radius: 0.7em;
 }
 
 #general-options {
@@ -121,26 +114,8 @@ button {
     justify-content: center;
 }
 
-#footer {
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    color: white;
-    font-family: 'Urbanist', sans-serif;
-    margin-top: 40px;
-    font-size: 17px;
-}
 
-#footer a {
-    font-size: 25px;
-    color: white;
-}
-
-button, input[type="number"] {
-    font-family: 'Urbanist', sans-serif;
-}
+/* Input and button styling */
 
 input[type="radio"], input[type="checkbox"] {
     -webkit-appearance: none;
@@ -150,12 +125,12 @@ input[type="radio"], input[type="checkbox"] {
     height: 15px;  
     padding: 2px;
     background-clip: content-box;
-    border: 2px solid #000000;
+    border: 2px solid #ffffff;
     border-radius: 50%;
 }
 
 input[type="radio"]:checked, input[type="checkbox"]:checked {
-    background-color: black;
+    background-color: rgb(255, 255, 255);
 }
 
 input[type="radio"], input[type="checkbox"], input[type="color"], button, i, label {
@@ -190,7 +165,7 @@ input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 20px;
     width: 20px;
-    background: #b12e2e;
+    background: #d0d0d0;
     border-radius: 50%;
     cursor: pointer;
 }

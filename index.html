@@ -19,79 +19,69 @@
 </head>
 
 <body>
-
-    <div class="main-content">
-        <div name="options">
-            <div name="size-options">
-                <label for="grid-size">Choose The Canvas Size </label>
-                <div>
-                    <input id="grid-size" type="number" min="1" max="100" name="grid-size" value="25">
-                    <button class="grid-size selection">Enter</button>
-                </div>
-            </div>
-
+        <div id="options">
             <div class="draw-mode options-container" name="draw-modes">
-                <legend>Draw Modes</legend>
-                <div class="option-container" name="option-container">
+                <h2>Draw Modes</h2>
+                <div class="option-container" >
                     <label for="click-drag-hold-mode">Click, Hold and Drag</label>
                     <input type="radio" name="draw-mode" value="click-drag-hold"
                         id="click-drag-hold-mode" checked>
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="click-drag-release-mode">Click, Release and Drag</label>
                     <input type="radio" name="draw-mode" value="click-drag-release"
                         id="click-drag-release-mode">
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="hover-over-mode">Hover Over </label>
                     <input type="radio" name="draw-mode" value="hover-over" id="hover-over-mode">
                 </div>
             </div>
 
             <div class="draw-tools options-container" name="draw-tools">
-                <legend>Draw Tools</legend>
-                <div class="option-container" name="option-container">
+                <h2>Draw Tools</h2>
+                <div class="option-container" >
                     <label for="colored-pen">Colored Pen</label>
                     <input type="color" id="penColorWell" value="#ff6161">
                     <input type="radio" id="colored-pen" name="pen-mode" checked>
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="randomized-pen">Randomized Pen </label>
                     <input type="radio" id="randomized-pen" name="pen-mode">
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="shader-pen">Shader Pen </label>
                     <input type="range" name="shader-pen-control" id="shader-pen-control" min="1" max="10" step="1" value="6">
                     <input type="radio" id="shader-pen" name="pen-mode">
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="lightener-pen">Lightener Pen </label>
                     <input type="range" name="lightener-pen-control" id="lightener-pen-control" min="1" max="10" step="1" value="6">
                     <input type="radio" id="lightener-pen" name="pen-mode">
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="eraser-pen">Eraser Pen </label>
                     <input type="radio" id="eraser-pen" name="pen-mode">
                 </div>
             </div>
 
             <div class="canvas-tools options-container" name="canvas-tools">
-                <legend>Canvas Tools</legend>
-                <div class="option-container" name="option-container">
+                <h2>Canvas Tools</h2>
+                <div class="option-container" >
                     <label for="grid-lines-toggle">Gridlines</label>
                     <input type="color" id="grid-lines-color-well" value="#eea0a0">
                     <input type="checkbox" name="grid-lines" id="grid-lines-toggle">
                 </div>
 
-                <div class="option-container" name="option-container">
+                <div class="option-container" >
                     <label for="bgColorWell">Background</label>
-                    <input type="color" id="bgColorWell" value="#f7f7f7">
+                    <input type="color" id="bgColorWell" value="#2a2a2a">
                 </div>
 
                 <div id="general-options">
@@ -102,8 +92,12 @@
 
         <div class="grid-container">
             <h1>Etch-A-Sketch</h1>
+            <div id="sizing-controls">
+                <label for="grid-size">Choose The Canvas Size: </label>
+                <input id="grid-size" type="number" min="1" max="100" name="grid-size" value="25">
+                <button class="grid-size selection">Enter</button>
+            </div>
         </div>
-    </div>
 
 </body>
 
