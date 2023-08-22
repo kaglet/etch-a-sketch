@@ -225,8 +225,8 @@ function createGrid() {
     grid.classList.add('grid');
     grid.setAttribute('id', 'grid');
 
-    let gridBackgroundColorWell = document.getElementById('bgColorWell');
-    grid.style.backgroundColor = gridBackgroundColorWell.value;
+    // let gridBackgroundColorWell = document.getElementById('bgColorWell');
+    grid.style.backgroundColor = "#2a2a2a";
 
     return grid;
 }
@@ -294,10 +294,10 @@ function setupPage() {
         }
     });
     
-    let gridBackgroundColorWell = document.getElementById('bgColorWell');
-    gridBackgroundColorWell.addEventListener('input', function (e) {
-            grid.style.backgroundColor = gridBackgroundColorWell.value;
-    });
+    // let gridBackgroundColorWell = document.getElementById('bgColorWell');
+    // gridBackgroundColorWell.addEventListener('input', function (e) {
+    //         grid.style.backgroundColor = gridBackgroundColorWell.value;
+    // });
 
     setDrawModeToClickDragHold();
 
