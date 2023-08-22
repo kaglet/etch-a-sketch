@@ -37,7 +37,7 @@ h2, .options-container label, label[for="grid-size"] {
 }
 
 h2, .grid-size.options-container label, label[for="grid-size"] {
-    font-size: 18px;
+    font-size: 22px;
 }
 
 div#options > div {
@@ -48,13 +48,15 @@ div#options > div {
     border: none;
     background-color: #2a2a2a;
     color: white;
+    font-size: 17px;
 }
 
 h1 {
     text-align: center;
-    font-family: 'Press Start 2P', fantasy;
+    font-family: 'Black Ops One', cursive;
+    letter-spacing: 0.2rem;
+    font-size: 60px;
     color: #ff6161;
-    font-size: 50px;
     padding: 20px;
 }
 
@@ -82,6 +84,7 @@ button, input[type="number"] {
     font-family: 'Urbanist', sans-serif;
     font-weight: bold;
     text-align: center;
+    font-size: 17px;
 }
 
 .grid-container {
@@ -105,8 +108,9 @@ button, input[type="number"] {
 }
 
 button {
-    padding: 0.8em 1em;
+    padding: 0.5em 0.7em;
     border-radius: 0.7em;
+    font-size: 17px;
 }
 
 #general-options {
@@ -143,6 +147,7 @@ button, i {
 
 button:hover {
     transform: scale(1.1);
+    background-color: rgb(209, 209, 209);
 }
 
 i:hover {
