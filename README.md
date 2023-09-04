@@ -10,3 +10,4 @@ Find the live preview [here](https://kaglet.github.io/etch-a-sketch/).
 
 - Add space placeholder for grid on page load otherwise there is a split second where it is unloaded.
 - Mobile support (?).
+- Add ticks and values on sliders to clarify that sliding right increases darken/lighten effect.
