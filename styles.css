@@ -12,7 +12,7 @@
     --chkbx-clr: white;
     --input-clr: white;
     --bold-heading-clr: red;
-    --canvas-clr: black;
+    --canvas-clr: rgb(237, 89, 89);
     --accent-clr: yellow;
     --accent-clr-hover: rgb(238, 238, 168);
     --primary-txt-clr: white;
@@ -124,6 +124,8 @@ button {
     padding: 0.5em 0.7em;
     border-radius: 0.7em;
     font-size: 17px;
+    appearance: none;
+    border: none;
 }
 
 #general-options {
@@ -143,12 +145,12 @@ input[type="radio"], input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 15px;
-    height: 15px;  
+    width: 25px;
+    height: 25px;  
     padding: 2px;
     background-clip: content-box;
     border: 2px solid var(--primary-txt-clr);
-    border-radius: 30%;
+    border-radius: 50%;
 }
 
 input[type="radio"]:checked, input[type="checkbox"]:checked {
@@ -157,6 +159,12 @@ input[type="radio"]:checked, input[type="checkbox"]:checked {
 
 input[type="radio"], input[type="checkbox"], input[type="color"], button, i, label {
     cursor: pointer;
+}
+
+input[type="color"] {
+    appearance: none;
+    background-color: transparent;
+    border: none;
 }
 
 button, i {
