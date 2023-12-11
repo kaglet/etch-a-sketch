@@ -1,4 +1,8 @@
+// GLOBAL VARIABLES
+
 let gridLinesPresent = false;
+
+// FUNCTIONS
 
 function removeGridEventListeners(grid) {
     // Remove all grid event listeners that might be active
@@ -220,17 +224,6 @@ function addDiv(grid, calculatedSize) {
     return grid;
 }
 
-function createGrid() {
-    let grid = document.createElement('div');
-    grid.classList.add('grid');
-    grid.setAttribute('id', 'grid');
-
-    // let gridBackgroundColorWell = document.getElementById('bgColorWell');
-    grid.style.backgroundColor = "#2a2a2a";
-
-    return grid;
-}
-
 function clearGrid(grid) {
     // if grid is empty, return, else remove all children until it is
     let childrenNodesList = document.querySelectorAll('div.grid div')
@@ -257,49 +250,6 @@ function populateGrid() {
             grid = addDiv(grid, calculatedSize);
         }
     }
-}
-
-function setupPage() {
-    let grid = createGrid();
-    const gridContainerDiv = document.querySelector('.grid-container');
-    const footer = document.querySelector('.footer');
-    gridContainerDiv.insertBefore(grid,footer);
-    populateGrid();
-    
-    let gridSizeButton = document.querySelector('button.grid-size');
-    gridSizeButton.addEventListener('click', populateGrid);
-    
-    let drawModeOptionsList = document.querySelectorAll('input[name="draw-mode"]');
-    drawModeOptionsList.forEach(drawModeOption => drawModeOption.addEventListener('click', setDrawMode));
-    
-    // Color in both cases separately
-    let gridLinesColorWell = document.getElementById('grid-lines-color-well');
-    gridLinesColorWell.addEventListener('input', function (e) {
-        if (gridLinesToggle.checked === true) {
-            let gridDivs = document.querySelectorAll('.grid div');
-            gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);        
-        }
-    });
-    
-    let gridLinesToggle = document.getElementById('grid-lines-toggle');
-    
-    gridLinesToggle.addEventListener('click', function () {
-        let gridDivs = document.querySelectorAll('.grid div');
-        if (gridLinesPresent) {
-            removeGridLines();
-        }
-        else {
-            addGridLines();
-        }
-    });
-
-    setDrawModeToClickDragHold();
-
-    let eraseGridButton = document.getElementById('erase-grid');
-    eraseGridButton.addEventListener('click', eraseGrid);
-
-    let resetButton = document.getElementById('reset');
-    resetButton.addEventListener('click', reset);
 }
 
 function removeGridLines() {
@@ -343,6 +293,50 @@ function eraseGrid() {
     });   
 }
 
-window.addEventListener('load', setupPage);
+// DECLARATIONS
+
+
+
+// EVENT LISTENERS
+let grid = document.querySelector('.grid');
+const gridContainerDiv = document.querySelector('.grid-container');
+const footer = document.querySelector('.footer');
+gridContainerDiv.insertBefore(grid,footer);
+populateGrid();
+
+let gridSizeButton = document.querySelector('button.grid-size');
+gridSizeButton.addEventListener('click', populateGrid);
+
+let drawModeOptionsList = document.querySelectorAll('input[name="draw-mode"]');
+drawModeOptionsList.forEach(drawModeOption => drawModeOption.addEventListener('click', setDrawMode));
+
+// Color in both cases separately
+let gridLinesColorWell = document.getElementById('grid-lines-color-well');
+gridLinesColorWell.addEventListener('input', function (e) {
+    if (gridLinesToggle.checked === true) {
+        let gridDivs = document.querySelectorAll('.grid div');
+        gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);        
+    }
+});
+
+let gridLinesToggle = document.getElementById('grid-lines-toggle');
+
+gridLinesToggle.addEventListener('click', function () {
+    let gridDivs = document.querySelectorAll('.grid div');
+    if (gridLinesPresent) {
+        removeGridLines();
+    }
+    else {
+        addGridLines();
+    }
+});
+
+setDrawModeToClickDragHold();
+
+let eraseGridButton = document.getElementById('erase-grid');
+eraseGridButton.addEventListener('click', eraseGrid);
+
+let resetButton = document.getElementById('reset');
+resetButton.addEventListener('click', reset);
 
 
