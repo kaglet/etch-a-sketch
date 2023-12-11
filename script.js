@@ -1,6 +1,7 @@
 // GLOBAL VARIABLES
 
 let gridLinesPresent = false;
+let gridWidth = 500;
 
 // FUNCTIONS
 
@@ -189,7 +190,7 @@ function setDrawMode(e) {
     }
 }
 
-function getNumberOfDivs() {
+function getGridDimensionsFromInput() {
     let gridSizeInput = document.querySelector('input#grid-size');
     if (gridSizeInput.value > 100) {
         gridSizeInput.value = 100;
@@ -200,7 +201,7 @@ function getNumberOfDivs() {
     return gridSizeInput.value;
 }
 
-function getDesiredDivSize(numberOfDivs, gridDimensions) {
+function getDividedDivSize(numberOfDivs, gridDimensions) {
     return gridDimensions / numberOfDivs;
 }
 
@@ -211,6 +212,7 @@ function addDiv(grid, calculatedSize) {
 
     let gridLinesColorWell = document.getElementById('grid-lines-color-well');
     let gridLinesToggle = document.getElementById('grid-lines-toggle');
+
     if (gridLinesToggle.checked === true) {
         div.style.border = "1px solid " + gridLinesColorWell.value;
     }
@@ -236,16 +238,15 @@ function clearGrid(grid) {
     }
 }
 
-function populateGrid() {
-    let grid = document.querySelector('div.grid');
+function populateGridCells(grid) {
     clearGrid(grid);
 
-    let numberOfDivs = getNumberOfDivs();
-    const gridDimensions = 500;
+    let numberOfDivs = getGridDimensionsFromInput();
+    const gridDimensions = gridWidth;
 
     for (let i = 0; i < numberOfDivs; i++) {
         for (let j = 0; j < numberOfDivs; j++) {
-            let calculatedSize = getDesiredDivSize(numberOfDivs, gridDimensions);
+            let calculatedSize = getDividedDivSize(numberOfDivs, gridDimensions);
 
             grid = addDiv(grid, calculatedSize);
         }
@@ -282,7 +283,7 @@ function reset() {
 
     let gridSizeInput = document.querySelector('input#grid-size');
     gridSizeInput.value = 25;
-    populateGrid();
+    populateGridCells(grid);
 }
 
 function eraseGrid() {
@@ -294,35 +295,21 @@ function eraseGrid() {
 }
 
 // DECLARATIONS
+let grid = document.querySelector('.grid');
+let gridSizeButton = document.querySelector('button.grid-size');
+let drawModeOptionsList = document.querySelectorAll('input[name="draw-mode"]');
+let gridLinesColorWell = document.getElementById('grid-lines-color-well');
+let gridLinesToggle = document.getElementById('grid-lines-toggle');
+let eraseGridButton = document.getElementById('erase-grid');
+let resetButton = document.getElementById('reset');
 
-
+// LOGIC
+// Set default behavior before drawing can take place
+populateGridCells(grid);
+setDrawModeToClickDragHold();
 
 // EVENT LISTENERS
-let grid = document.querySelector('.grid');
-const gridContainerDiv = document.querySelector('.grid-container');
-const footer = document.querySelector('.footer');
-gridContainerDiv.insertBefore(grid,footer);
-populateGrid();
-
-let gridSizeButton = document.querySelector('button.grid-size');
-gridSizeButton.addEventListener('click', populateGrid);
-
-let drawModeOptionsList = document.querySelectorAll('input[name="draw-mode"]');
-drawModeOptionsList.forEach(drawModeOption => drawModeOption.addEventListener('click', setDrawMode));
-
-// Color in both cases separately
-let gridLinesColorWell = document.getElementById('grid-lines-color-well');
-gridLinesColorWell.addEventListener('input', function (e) {
-    if (gridLinesToggle.checked === true) {
-        let gridDivs = document.querySelectorAll('.grid div');
-        gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);        
-    }
-});
-
-let gridLinesToggle = document.getElementById('grid-lines-toggle');
-
 gridLinesToggle.addEventListener('click', function () {
-    let gridDivs = document.querySelectorAll('.grid div');
     if (gridLinesPresent) {
         removeGridLines();
     }
@@ -331,12 +318,18 @@ gridLinesToggle.addEventListener('click', function () {
     }
 });
 
-setDrawModeToClickDragHold();
-
-let eraseGridButton = document.getElementById('erase-grid');
 eraseGridButton.addEventListener('click', eraseGrid);
 
-let resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', reset);
 
+gridSizeButton.addEventListener('click', () => populateGridCells(grid));
+
+drawModeOptionsList.forEach(drawModeOption => drawModeOption.addEventListener('click', setDrawMode));
+
+gridLinesColorWell.addEventListener('input', function (e) {
+    if (gridLinesToggle.checked === true) {
+        let gridDivs = document.querySelectorAll('.grid div');
+        gridDivs.forEach(div => div.style.border = '1px solid ' + gridLinesColorWell.value);        
+    }
+});
 
