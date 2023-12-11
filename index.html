@@ -22,57 +22,52 @@
 </head>
 
 <body>
-        <div id="options">
-            <div class="draw-mode options-container" name="draw-modes">
-                <h2>Draw Modes</h2>
-                <div class="option-container" >
-                    <label for="click-drag-hold-mode">Click, Hold and Drag</label>
-                    <input type="radio" name="draw-mode" value="click-drag-hold"
-                        id="click-drag-hold-mode" checked>
+        <div id="options" class="options">
+            <div class="wrapper">
+                <div class="draw-mode options-container" name="draw-modes">
+                    <h2>Draw Modes</h2>
+                    <div class="option-container" >
+                        <label for="click-drag-hold-mode">Click, Hold and Drag</label>
+                        <input type="radio" name="draw-mode" value="click-drag-hold"
+                            id="click-drag-hold-mode" checked>
+                    </div>
+                    <div class="option-container" >
+                        <label for="click-drag-release-mode">Click, Release and Drag</label>
+                        <input type="radio" name="draw-mode" value="click-drag-release"
+                            id="click-drag-release-mode">
+                    </div>
+                    <div class="option-container" >
+                        <label for="hover-over-mode">Hover Over </label>
+                        <input type="radio" name="draw-mode" value="hover-over" id="hover-over-mode">
+                    </div>
                 </div>
-
-                <div class="option-container" >
-                    <label for="click-drag-release-mode">Click, Release and Drag</label>
-                    <input type="radio" name="draw-mode" value="click-drag-release"
-                        id="click-drag-release-mode">
+                <div class="draw-tools options-container" name="draw-tools">
+                    <h2>Draw Tools</h2>
+                    <div class="option-container" >
+                        <label for="colored-pen">Colored Pen</label>
+                        <input type="color" id="penColorWell" value="#ff6161">
+                        <input type="radio" id="colored-pen" name="pen-mode" checked>
+                    </div>
+                    <div class="option-container" >
+                        <label for="randomized-pen">Randomized Pen </label>
+                        <input type="radio" id="randomized-pen" name="pen-mode">
+                    </div>
+                    <div class="option-container" >
+                        <label for="eraser-pen">Eraser Pen </label>
+                        <input type="radio" id="eraser-pen" name="pen-mode">
+                    </div>
                 </div>
-
-                <div class="option-container" >
-                    <label for="hover-over-mode">Hover Over </label>
-                    <input type="radio" name="draw-mode" value="hover-over" id="hover-over-mode">
-                </div>
-            </div>
-
-            <div class="draw-tools options-container" name="draw-tools">
-                <h2>Draw Tools</h2>
-                <div class="option-container" >
-                    <label for="colored-pen">Colored Pen</label>
-                    <input type="color" id="penColorWell" value="#ff6161">
-                    <input type="radio" id="colored-pen" name="pen-mode" checked>
-                </div>
-
-                <div class="option-container" >
-                    <label for="randomized-pen">Randomized Pen </label>
-                    <input type="radio" id="randomized-pen" name="pen-mode">
-                </div>
-
-                <div class="option-container" >
-                    <label for="eraser-pen">Eraser Pen </label>
-                    <input type="radio" id="eraser-pen" name="pen-mode">
-                </div>
-            </div>
-
-            <div class="canvas-tools options-container" name="canvas-tools">
-                <h2>Canvas Tools</h2>
-                <div class="option-container" >
-                    <label for="grid-lines-toggle">Gridlines</label>
-                    <input type="color" id="grid-lines-color-well" value="#eea0a0">
-                    <input type="checkbox" name="grid-lines" id="grid-lines-toggle">
-                </div>
-
-                <div id="general-options">
-                    <button id="reset">Reset All</button>
-                    <button id="erase-grid">Clear Canvas</button>
+                <div class="canvas-tools options-container" name="canvas-tools">
+                    <h2>Canvas Tools</h2>
+                    <div class="option-container" >
+                        <label for="grid-lines-toggle">Gridlines</label>
+                        <input type="color" id="grid-lines-color-well" value="#eea0a0">
+                        <input type="checkbox" name="grid-lines" id="grid-lines-toggle">
+                    </div>
+                    <div id="general-options">
+                        <button id="reset">Reset All</button>
+                        <button id="erase-grid">Clear Canvas</button>
+                    </div>
                 </div>
             </div>
         </div>
