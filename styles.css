@@ -6,8 +6,21 @@
     box-sizing: border-box;
 }
 
+:root {
+    --main-bg-clr: white;
+    --pnl-clr: blue;
+    --chkbx-clr: white;
+    --input-clr: white;
+    --bold-heading-clr: red;
+    --canvas-clr: black;
+    --accent-clr: yellow;
+    --accent-clr-hover: rgb(238, 238, 168);
+    --primary-txt-clr: white;
+    --secondary-txt-clr: white;
+}
+
 body {
-    background-color: rgb(27, 27, 27);
+    background-color: var(--main-bg-clr);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -19,7 +32,7 @@ body {
     flex-wrap: wrap;
     height: 500px;
     width: 500px;
-    background-color: navy;
+    background-color: var(--canvas-clr);
     flex-shrink: 0;
 }
 
@@ -46,8 +59,8 @@ div#options > div {
     flex-direction: column;
     gap: 20px;
     border: none;
-    background-color: #2a2a2a;
-    color: white;
+    background-color: var(--pnl-clr);
+    color: var(--primary-txt-clr);
     font-size: 17px;
 }
 
@@ -56,7 +69,7 @@ h1 {
     font-family: 'Black Ops One', monospace;
     letter-spacing: 0.2rem;
     font-size: 60px;
-    color: #ff6161;
+    color: var(--bold-heading-clr);
     padding: 20px;
 }
 
@@ -76,7 +89,7 @@ div#sizing-controls {
 
 label[for="grid-size"] {
     font-family: 'Urbanist', sans-serif;
-    color: #ffffff;
+    color: var(--primary-txt-clr);
     align-self: center;
 }
 
@@ -120,7 +133,6 @@ button {
 }
 
 #general-options > button {
-    padding: 0.5rem 0.6rem;
     flex: 1;
 }
 
@@ -135,12 +147,12 @@ input[type="radio"], input[type="checkbox"] {
     height: 15px;  
     padding: 2px;
     background-clip: content-box;
-    border: 2px solid #ffffff;
+    border: 2px solid var(--primary-txt-clr);
     border-radius: 30%;
 }
 
 input[type="radio"]:checked, input[type="checkbox"]:checked {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--primary-txt-clr);
 }
 
 input[type="radio"], input[type="checkbox"], input[type="color"], button, i, label {
@@ -153,48 +165,20 @@ button, i {
 
 button:hover {
     transform: scale(1.1);
-    background-color: rgb(209, 209, 209);
+    background-color: var(--primary-txt-clr);
 }
 
 i:hover {
     transform: scale(1.2);
 }
 
-/*Style the slider*/
-
-input[type="range"] {
-    -webkit-appearance: none;
-    height: 3px;
-    width: 100px;
-    background-color: #ddd;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 20px;
-    width: 20px;
-    background: #d0d0d0;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-
-/*Progress bar only supported in mozilla browser*/
-input[type="range"]::-moz-range-progress {
-    background: #000;
-}
-
-
 .footer {
     font-family: 'Urbanist', sans-serif;
     font-size: 20px;
-    color: white;
+    color: var(--primary-txt-clr);
 }
 
 a, i {
-    color: rgb(254, 114, 102);
+    color: var(--bold-heading-clr);
     text-decoration: none;
 }
