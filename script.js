@@ -155,22 +155,6 @@ function colorAccordingToPenMode(e) {
         e.target.style.backgroundColor = color;
         e.target.classList.add('colored');
     }
-    else if (document.getElementById("shader-pen").checked) {
-        if (e.target.classList.contains('colored')) {
-            let slider = document.getElementById('shader-pen-control');
-            let color = getDarkerColor(e.target.style.backgroundColor, slider.value);
-            e.target.style.backgroundColor = color;
-            e.target.classList.add('colored');
-        }
-    }
-    else if (document.getElementById("lightener-pen").checked) {
-        if (e.target.classList.contains('colored')) {
-            let slider = document.getElementById('lightener-pen-control');;
-            let color = getDarkerColor(e.target.style.backgroundColor, -slider.value);
-            e.target.style.backgroundColor = color;
-            e.target.classList.add('colored');
-        }
-    }
     else if (document.getElementById("eraser-pen").checked) {
         if (e.target.classList.contains('colored')) {
             e.target.style.backgroundColor = "";
