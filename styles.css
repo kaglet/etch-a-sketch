@@ -47,7 +47,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 1.3rem 1.5rem;
+    padding: 1.3rem 0rem;
 }
 
 .options-container:not(:last-child) {
@@ -66,7 +66,7 @@ h2, .grid-size.options-container label, label[for="grid-size"] {
     font-size: 22px;
 }
 
-div#options > div {
+div#options > div:not(.wrapper) {
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -94,7 +94,8 @@ div.options {
 
 .wrapper {
     background-color: var(--pnl-clr);
-    padding: 0px 1rem;
+    padding: 0px 1.5rem;
+    width: 330px;
 }
 
 div#sizing-controls {
@@ -104,7 +105,7 @@ div#sizing-controls {
 }
 
 label[for="grid-size"] {
-    color: var(--primary-txt-clr);
+    color: var(--secondary-txt-clr);
     align-self: center;
 }
 
@@ -187,6 +188,7 @@ button:hover {
     transform: scale(1.1);
     background-color: var(--primary-txt-clr);
     color: var(--secondary-txt-clr);
+    border: 2px solid var(--accent-clr);
 }
 
 i:hover {
@@ -195,7 +197,7 @@ i:hover {
 
 .footer {
     font-size: 20px;
-    color: var(--primary-txt-clr);
+    color: var(--secondary-txt-clr);
 }
 
 a, i {
