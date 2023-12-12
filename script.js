@@ -1,6 +1,8 @@
 // GLOBAL VARIABLES
 let gridLinesPresent = false;
 let gridWidth = 500;
+let defaultGridLinesClr = "#92d6e1";
+let defaultPenClr = "#6adcf0";
 
 // FUNCTIONS
 function removeGridEventListeners(grid) {
@@ -218,9 +220,9 @@ function reset() {
     let drawToolInput = document.getElementById('colored-pen');
     drawToolInput.checked = true;
     let penColorWell = document.getElementById('penColorWell');
-    penColorWell.value = "#ff6161";
+    penColorWell.value = defaultPenClr;
     let gridLinesColorWell = document.getElementById('grid-lines-color-well');
-    gridLinesColorWell.value = "#eea0a0";
+    gridLinesColorWell.value = defaultGridLinesClr;
 
     let gridSizeInput = document.querySelector('input#grid-size');
     gridSizeInput.value = 25;
