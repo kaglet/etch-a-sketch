@@ -9,17 +9,23 @@
 
 :root {
     color: var(--primary-txt-clr);
-    --main-bg-clr: rgb(239, 120, 69);
-    --pnl-clr: rgb(255, 255, 255);
+    --main-bg-clr: rgb(27, 27, 27);
+    --pnl-clr: rgb(0, 0, 0);
     --chkbx-clr: white;
     --input-clr: white;
-    --bold-heading-clr: rgb(255, 255, 255);
+    --bold-heading-clr: rgb(106, 220, 240);
     --canvas-clr: var(--pnl-clr);
-    --divider-clr: var(--main-bg-clr);
+    --divider-clr: white;
     --accent-clr: white;
     --accent-clr-hover: rgb(238, 238, 168);
-    --primary-txt-clr: var(--main-bg-clr);
+    --primary-txt-clr: white;
     --secondary-txt-clr: white;
+    --blur-radius: 5px;
+    --spread-radius: 0px;
+}
+
+.grid, .wrapper {
+    box-shadow: 10px 10px 7px rgb(20, 20, 20), -2px -2px 6px rgb(20, 20, 20);
 }
 
 body {
@@ -129,14 +135,18 @@ button, input[type="number"] {
     align-items: center;
 }
 
-button {
+button, input[type="number"] {
     padding: 0.5em 0.7em;
-    border-radius: 0.7em;
     font-size: 17px;
     appearance: none;
-    border: 2px solid var(--main-bg-clr);
-    background-color: var(--accent-clr);
-    color: var(--main-bg-clr);
+    border: 2px solid var(--accent-clr);
+    background-color: var(--pnl-clr);
+    color: var(--secondary-txt-clr);
+    transition: scale 0.1s linear;
+}
+
+button:active {
+    scale: 0.93;
 }
 
 #general-options {
@@ -165,7 +175,8 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 input[type="radio"]:checked, input[type="checkbox"]:checked {
-    background-color: var(--primary-txt-clr);
+    background-color: var(--bold-heading-clr);
+    border: 2px solid var(--bold-heading-clr);
 }
 
 input[type="radio"], input[type="checkbox"], input[type="color"], button, i, label {
@@ -185,10 +196,9 @@ button, i {
 }
 
 button:hover {
-    transform: scale(1.1);
-    background-color: var(--primary-txt-clr);
-    color: var(--secondary-txt-clr);
-    border: 2px solid var(--accent-clr);
+    position: relative;
+    top: -3px;
+    box-shadow: 0 0 var(--blur-radius) var(--spread-radius) var(--accent-clr);
 }
 
 i:hover {

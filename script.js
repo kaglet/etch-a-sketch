@@ -243,6 +243,7 @@ let gridLinesColorWell = document.getElementById('grid-lines-color-well');
 let gridLinesToggle = document.getElementById('grid-lines-toggle');
 let eraseGridButton = document.getElementById('erase-grid');
 let resetButton = document.getElementById('reset');
+let radioButtons = document.querySelectorAll('input[type="radio"], input[type="checkbox"]');
 
 // LOGIC
 // Set default behavior before drawing can take place
@@ -274,3 +275,12 @@ gridLinesColorWell.addEventListener('input', function (e) {
     }
 });
 
+radioButtons.forEach(radioButton => {
+    radioButton.addEventListener('onchange', (radioButton, e) => {
+        if (radioButton.checked) {
+            console.log(e);
+        } else {
+
+        }
+    });
+});
