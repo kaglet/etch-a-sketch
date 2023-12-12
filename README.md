@@ -6,6 +6,10 @@ This is a pixel sketch pad as a grid to be drawn on using various pens and tools
 
 Find the live preview [here](https://kaglet.github.io/etch-a-sketch/).
 
+At full screen the tool should look like this:
+
+![image](https://github.com/kaglet/etch-a-sketch/assets/96872447/46918a0b-8d72-4356-a944-462ddbcf8544)
+
 ## To add in future if I revisit
 
 - Add space placeholder for grid on page load otherwise there is a split second where it is unloaded.
