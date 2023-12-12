@@ -12,6 +12,4 @@ At full screen the tool should look like this:
 
 ## To add in future if I revisit
 
-- Add space placeholder for grid on page load otherwise there is a split second where it is unloaded.
-- Mobile support (?).
-- Add ticks and values on sliders to clarify that sliding right increases darken/lighten effect.
+- Mobile responsiveness.
