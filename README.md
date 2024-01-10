@@ -2,7 +2,7 @@
 
 ## Project Description   
 
-This is based off the popular real life etch-a-sketch drawing board, as a pixel sketch pad to be drawn on using various pens and tools, made as part of the open source web development course [The Odin Project](https://www.theodinproject.com).  This is the fourth assignment of the foundations section. 
+Based off the popular real life etch-a-sketch drawing board, this is a pixel sketch pad to be drawn on using various pens and tools, made as part of the open source web development course [The Odin Project](https://www.theodinproject.com).  This is the fourth assignment of the foundations section. 
 
 Find the live preview [here](https://kaglet.github.io/etch-a-sketch/).
 
